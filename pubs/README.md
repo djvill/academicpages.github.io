@@ -108,3 +108,18 @@ if (!grepl("\\d{4}", year) {
 	cvHead <- typeRecode[type]
 }
 ```
+
+### Newlines
+
+The `bib2df` package doesn't like newlines within fields, so `format.sh` converts newlines to `;;;`.
+So far, these only show up in the `note` field (separating different extra fields) and `abstract` (paragraph breaks).
+
+In R, handle this with something like
+
+```r
+x |> 
+  mutate(across(NOTE, ~ stringr::str_split(.x, ";;;")))
+```
+
+or maybe `reframe()`.
+
