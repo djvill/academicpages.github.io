@@ -117,8 +117,15 @@ pubs <- pubs %>%
 ```
 
 
-Point `FILE` paths to website URL
+Handle PDF attachments (`FILE`)
 
+```{r}
+pubs <- pubs %>% 
+  ##Point FILE paths to website URL
+  mutate(across(FILE, ~ paste0("/pubs/", .x)),
+         ##PDFs only
+         across(FILE, ~ if_else(endsWith(.x, ".pdf"), .x, NA_character_)))
+```
 
 
 

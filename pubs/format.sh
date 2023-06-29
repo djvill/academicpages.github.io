@@ -11,7 +11,7 @@ rm *pdf
 find My-Pubs/ -name *pdf -print0 | xargs -0 -I file mv file .
 
 ##Edit .bib file to reflect new pdf paths
-sed -i -E 's/:files.+\.pdf/.pdf/g' My-Pubs.bib
+sed -i -E 's/.pdf:files.+},$/.pdf},/g' My-Pubs.bib
 
 ##Make .bib safe for reading by bib2df by removing within-field newlines
 rmnewline () {
