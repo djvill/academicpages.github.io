@@ -45,7 +45,7 @@ The usual Zotero export, plus a few changes.
 
 In addition to the usual date processing, dates can also be one of six qualitative values.
 These will surface in the BibTeX `year` field.
-Anything that's not a date or one of these values will yield a blank `year` field.
+Anything that's not a date or one of these values will yield a blank `year` field in the BibTeX file.
 
 - `in prep`: "I'm working on this."
 - `under review`: "I've submitted it."
@@ -55,6 +55,9 @@ Anything that's not a date or one of these values will yield a blank `year` fiel
 - `in press`: "Everything has been finalized, it just hasn't come out yet."
 
 To use these date codes with Zotero, replace the default `~/Zotero/translators/BibTeX.js` file with [this one](https://github.com/djvill/zotero-translators/blob/master/BibTeX.js) and restart Zotero.
+If the Zotero date field can't be parsed to include a year, the default BibTeX translator doesn't write a `year` field and uses `nodate` for the BibTeX key.
+
+For the purpose of CV headings, all but `in press` get filed under "Works in progress".
 
 In the future, I want to format citations on my CV to include these in the "Journal" macro (e.g., "in press at _Linguistic Variation and Change_").
 
@@ -85,11 +88,13 @@ NOTE: Add an `open-access` field for PDFs that can vs. can't be shared?
 ### CV heading logic
 
 Publications will be assigned to CV headings according to the following logic.
-(Note that the My-Pubs Zotero search excludes presentations.)
+(N.B. The My-Pubs Zotero search excludes presentations.)
+This is just the basic logic; the actual implementation is dataframe-based
 
 ```r
 ##Works in progress overrides other headings
-if (!grepl("\\d{4}", year) {
+if (!(year %in% c("in prep", "under review", "revisions in prep", 
+                  "revisions under review", "forthcoming"))) {
 	cvHead <- "Works in progress"
 
 ##Manual heading annotation overrides type logic
@@ -108,6 +113,7 @@ if (!grepl("\\d{4}", year) {
 		article = "Peer-reviewed publications",
 		incollection = "Publications in edited volumes",
 		inproceedings = "Publications in conference proceedings",
+		phdthesis = "PhD dissertation",
 		misc = "Open research tools" ##Dataset, Software
 	)
 	cvHead <- typeRecode[type]

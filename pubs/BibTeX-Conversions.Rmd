@@ -33,7 +33,7 @@ pre {
 
 This document contains code that takes a bibfile and outputs several files for different purposes:
 
-- **`r params$outbib`**: A bibfile that doesn't have extra info (and excludes some categories of publication), meant for folks who want to download my bibliography
+- **`r params$outbib`**: A bibfile that doesn't have extra info (and excludes some categories of publication), meant for folks who want to download my bibliography. It excludes some categories of publications (book reviews) as well as works in progress
 - **`r params$outrds`**: An Rds file that has all the info needed to format website contents. This will take the place of `publications.tsv` in the publication-data-processing workflow
 - **`r params$outcsv`**: A fallback csv file with most of the info in `r params$outrds`, but formatted a little nicer
 
@@ -85,9 +85,36 @@ pubs <- pubs %>%
   select(-"NA")
 ```
 
-
-
 Heading logic
+
+
+```{r}
+patchYear <- tibble(YEAR = c("in prep", "under review", 
+                             "revisions in prep", "revisions under review", 
+                             "forthcoming"),
+                    heading = "Works in progress")
+patchCategory <- tribble(
+  ~CATEGORY, ~heading,
+  "ARTICLE", "Peer-reviewed publications",
+  "INCOLLECTION", "Publications in edited volumes",
+  "INPROCEEDINGS", "Publications in conference proceedings",
+  "PHDTHESIS", "PhD dissertation",
+  "MISC", "Open research tools" ##Dataset, Software
+)
+matchHeading <- c(
+  "peer-reviewed" ~ "Peer-reviewed publications",
+  "proceedings" ~ "Publications in conference proceedings",
+  "book-review" ~ "Book reviews",
+  "open-tools" ~ "Open research tools"
+)
+
+pubs <- pubs %>% 
+  ##Recode heading
+  mutate(across(heading, ~ case_match(.x, !!!matchHeading, .default=.x))) %>% 
+  ##Patch based on YEAR first, then CATEGORY
+  rows_patch(patchYear, "YEAR", unmatched="ignore") %>% 
+  rows_patch(patchCategory, "CATEGORY", unmatched="error")
+```
 
 
 Point `FILE` paths to website URL
