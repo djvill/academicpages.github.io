@@ -62,8 +62,10 @@ In the future, I want to format citations on my CV to include these in the "Jour
 ### Extra fields
 
 I've added a few extra fields for processing citations.
-On the Zotero side, these fields can be input within the `Extra` field (skipping any that don't apply) as `field: value`, separated by newlines.
-On the BibTeX side, these show up as separate fields.
+On the Zotero side, you should input these fields within the `Extra` field (skipping any that don't apply) as `field: value`, separated by newlines.
+On the BibTeX side, these show up within the `note` field;
+the `format.sh` post-processing script turns newlines into `;;;`.
+
 
 - `dontinclude`: Use `TRUE` to exclude this publication from BibTeX (useful if there's no other good filter, like for a book review)
 - `project`: Larger project(s) containing the publication. If multiple, separate with commas. If blank, project will go in "miscellaneous"
@@ -73,9 +75,12 @@ On the BibTeX side, these show up as separate fields.
 - `undergradauth`: Undergraduate co-author(s): comma-separated last names
 - `heading`: CV heading to place publication under (only if needed for override; see following section)
 - `pubnote`: Other notes about authorship/peer review to put in a footnote (i.e., to motivate credit for counting publications)
+- `DOI` (only for item types for which Zotero doesn't provide a DOI field [e.g., chapters]). The BibTeX converter plunks this into the normal `DOI` BibTeX field
 
-For some item types, Zotero doesn't provide a DOI field (e.g., chapters), so you can also include `DOI` in `Extra`.
+Any fields other than these will be discarded by `BibTeX-to-CSV.Rmd`
 
+
+NOTE: Add an `open-access` field for PDFs that can vs. can't be shared?
 
 ### CV heading logic
 
@@ -111,15 +116,7 @@ if (!grepl("\\d{4}", year) {
 
 ### Newlines
 
-The `bib2df` package doesn't like newlines within fields, so `format.sh` converts newlines to `;;;`.
+The `bib2df` R package doesn't like newlines within fields, so `format.sh` converts field-internal newlines to `;;;`.
 So far, these only show up in the `note` field (separating different extra fields) and `abstract` (paragraph breaks).
 
-In R, handle this with something like
-
-```r
-x |> 
-  mutate(across(NOTE, ~ stringr::str_split(.x, ";;;")))
-```
-
-or maybe `reframe()`.
 

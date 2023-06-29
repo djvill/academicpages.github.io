@@ -2,3 +2,6 @@ _site/
 node_modules/
 *.url
 *.lnk
+
+
+Scratchpads/

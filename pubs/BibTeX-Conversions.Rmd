@@ -1,0 +1,129 @@
+---
+title: "Process BibTeX file"
+author: "Dan Villarreal"
+date: "2023-06-29"
+output: github_document
+# output: 
+  # html_document:
+  #   code_folding: show
+  #   df_print: paged
+params:
+  inbib: My-Pubs.bib
+  outbib: Villarreal-Pubs.bib
+  outcsv: My-Pubs.csv
+  outrds: My-Pubs.Rds
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, comment="")
+
+library(tidyverse)
+library(bib2df)
+```
+
+```{css, echo=FALSE}
+/* Add scrollbars to long R input/output blocks */
+pre {
+  max-height: 300px;
+  overflow-y: auto;
+}
+```
+
+# Intro
+
+This document contains code that takes a bibfile and outputs several files for different purposes:
+
+- **`r params$outbib`**: A bibfile that doesn't have extra info (and excludes some categories of publication), meant for folks who want to download my bibliography
+- **`r params$outrds`**: An Rds file that has all the info needed to format website contents. This will take the place of `publications.tsv` in the publication-data-processing workflow
+- **`r params$outcsv`**: A fallback csv file with most of the info in `r params$outrds`, but formatted a little nicer
+
+
+
+
+# Parse input bibfile as dataframe
+
+Read BibTeX file as df (suppress inaccurate "NAs introduced by coercion" warning)
+
+```{r, warning=FALSE}
+pubs <- bib2df(params$inbib)
+```
+
+
+Handle extra fields
+
+```{r}
+##Permissible extra fields
+extraFields <- c("dontinclude", "project", "repo", "data", "gradauth", 
+                 "undergradauth", "heading","pubnote")
+
+##Parse vector of extras into list of dataframes
+parse_extra <- function(x, permissible=extraFields) {
+  library(dplyr)
+  library(stringr)
+  library(purrr)
+  
+  x %>% 
+    ##Split into indiv extra fields
+    str_split(";;;") %>%
+    ##Filter out impermissible fields
+    map(str_subset, paste0("^(", paste(permissible, collapse="|"), "):")) %>% 
+    ##Get df of name and value
+    map(~ as.data.frame(str_match(.x, "(?<name>.+): (?<value>.+)"))) %>% 
+    ##Remove "whole-match" col
+    map(select, -1)
+}
+
+##Add extra columns
+pubs <- pubs %>% 
+  ##Turn NOTE into list-col
+  mutate(across(NOTE, parse_extra)) %>% 
+  ##Pull out name-value pairs
+  unnest(NOTE, keep_empty=TRUE) %>% 
+  ##Each field in its own column
+  pivot_wider() %>% 
+  ##Remove NA column
+  select(-"NA")
+```
+
+
+
+Heading logic
+
+
+Point `FILE` paths to website URL
+
+
+
+
+# Write simplified BibTeX
+
+Process: only certain headings, no extra fields, add newlines back either here or w/ shell script, handle `(under)gradauth`
+
+
+Write
+
+
+# Text processing for Rds/csv
+
+Handle newlines, `\`, `\textit{}`
+
+
+# Write Rds
+
+Turn `project` into a list-col
+
+
+# Write csv
+
+Remove formatting marks (`_{}`)
+
+
+
+
+
+# Session info
+
+```{r}
+sessionInfo()
+```
+
