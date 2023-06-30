@@ -33,8 +33,8 @@ pre {
 
 This document contains code that takes a bibfile and outputs several files for different purposes:
 
-- **`r params$outbib`**: A bibfile that doesn't have extra info (and excludes some categories of publication), meant for folks who want to download my bibliography. It excludes some categories of publications (book reviews) as well as works in progress
-- **`r params$outrds`**: An Rds file that has all the info needed to format website contents. This will take the place of `publications.tsv` in the publication-data-processing workflow
+- **`r params$outbib`**: A bibfile that doesn't have extra info, meant for folks who want to download my bibliography. It excludes some categories of publications (book reviews) as well as works in progress
+- **`r params$outrds`**: An Rds file that has all the info needed to format website contents: CV, project pages, etc. This will take the place of `publications.tsv` in the publication-data-processing workflow
 - **`r params$outcsv`**: A fallback csv file with most of the info in `r params$outrds`, but formatted a little nicer
 
 
@@ -125,6 +125,39 @@ pubs <- pubs %>%
   mutate(across(FILE, ~ paste0("/pubs/", .x)),
          ##PDFs only
          across(FILE, ~ if_else(endsWith(.x, ".pdf"), .x, NA_character_)))
+```
+
+
+Turn URL into a list-column
+
+```{r}
+pubs <- pubs %>% 
+  mutate(across(URL, ~ str_split(.x, " and ")))
+```
+
+
+Add asterisks to `AUTHOR` (\* = grad/professional student co-author, \*\* = undergrad)
+
+```{r}
+pubs <- pubs %>%
+  mutate(
+    ##gradauth / undergradauth: format as regex
+    across(contains("gradauth"), 
+           ~ str_replace_all(.x, ",", "|") %>% 
+             paste0("^", .)),
+    AUTHOR = AUTHOR %>% 
+      ##Add * for grad authors
+      map2(gradauth,
+           ~ if_else(str_detect(.x, .y),
+                     str_replace(.x, ",", "*,"), ##Add star to last name
+                     # paste0(.x, "*"),          ##Add star to end of name
+                     .x)) %>% 
+      ##Add ** for undergrad authors
+      map2(undergradauth,
+           ~ if_else(str_detect(.x, .y),
+                     str_replace(.x, ",", "**,"), ##Add stars to last name
+                     # paste0(.x, "**"),          ##Add stars to end of name
+                     .x)))
 ```
 
 
