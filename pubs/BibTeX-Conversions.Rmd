@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo=TRUE, comment="")
 
 library(tidyverse)
 library(bib2df)
+library(xfun)
 ```
 
 ```{css, echo=FALSE}
@@ -136,6 +137,14 @@ pubs <- pubs %>%
 ```
 
 
+Replace temporary `;;;` with newlines
+
+```{r}
+pubs <- pubs %>% 
+  mutate(across(where(is.atomic), ~ str_replace_all(.x, ";;;", "\n")))
+```
+
+
 Add asterisks to `AUTHOR` (\* = grad/professional student co-author, \*\* = undergrad)
 
 ```{r}
@@ -164,15 +173,96 @@ pubs <- pubs %>%
 
 # Write simplified BibTeX
 
-Process: only certain headings, no extra fields, add newlines back either here or w/ shell script, handle `(under)gradauth`
+Remove extra info
+
+```{r}
+bibPubs <- 
+  pubs %>% 
+  ##No reviews or WIP
+  filter(!(heading %in% c("Book reviews", "Works in progress"))) %>% 
+  ##No fields unpacked from NOTE
+  select(matches("^[A-Z]+$", ignore.case=FALSE))
+```
 
 
-Write
+Override `bib2df::df2bib()` to use UTF-8 encoding (via `xfun::write_utf8()`)
+
+```{r}
+df2bib <- function (x, file = "", append = FALSE, allfields = TRUE) {
+  library(bib2df)
+  library(xfun)
+  
+  if (!is.character(file)) {
+    stop("Invalid file path: Non-character supplied.", call. = FALSE)
+  }
+  if (as.numeric(file.access(dirname(file), mode = 2)) != 
+    0 && file != "") {
+    stop("Invalid file path: File is not writeable.", call. = FALSE)
+  }
+  if (any({
+    df_elements <- sapply(x$AUTHOR, inherits, "data.frame")
+  })) {
+    x$AUTHOR[df_elements] <- lapply(x$AUTHOR[df_elements], 
+      na_replace)
+    x$AUTHOR[df_elements] <- lapply(x$AUTHOR[df_elements], 
+      function(x) {
+        paste(x$last_name, ", ", x$first_name, " ", 
+          x$middle_name, sep = "")
+      })
+    x$AUTHOR[df_elements] <- lapply(x$AUTHOR[df_elements], 
+      trimws)
+  }
+  names(x) <- toupper(names(x))
+  fields <- lapply(seq_len(nrow(x)), function(r) {
+    rowfields <- rep(list(character(0)), ncol(x))
+    names(rowfields) <- names(x)
+    for (i in seq_along(rowfields)) {
+      f <- x[[i]][r]
+      if (is.list(f)) {
+        f <- unlist(f)
+      }
+      rowfields[[i]] <- if (!length(f) | any(is.na(f))) {
+        character(0L)
+      }
+      else if (names(x)[i] %in% c("AUTHOR", "EDITOR")) {
+        paste(f, collapse = " and ")
+      }
+      else {
+        paste0(f, collapse = ", ")
+      }
+    }
+    rowfields <- rowfields[lengths(rowfields) > 0]
+    rowfields <- rowfields[!names(rowfields) %in% c("CATEGORY", 
+      "BIBTEXKEY")]
+    if (allfields) {
+      paste0("  ", names(rowfields), " = {", unname(unlist(rowfields)), 
+        "}", collapse = ",\n")
+    }
+    else {
+      paste0("  ", names(rowfields[nzchar(rowfields)]), 
+        " = {", unname(unlist(rowfields[nzchar(rowfields)])), 
+        "}", collapse = ",\n")
+    }
+  })
+  write_utf8(paste0("@", bib2df:::capitalize(x$CATEGORY), "{", x$BIBTEXKEY, 
+    ",\n", unlist(fields), "\n}\n", collapse = "\n\n"), 
+    con = file)
+  invisible(file)
+}
+```
+
+
+Write file
+
+```{r}
+df2bib(bibPubs, "Villarreal-Pubs.bib")
+```
+
 
 
 # Text processing for Rds/csv
 
-Handle newlines, `\`, `\textit{}`
+Handle `\`, `\textit{}`
 
 
 # Write Rds
