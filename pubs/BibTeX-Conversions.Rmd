@@ -129,11 +129,12 @@ pubs <- pubs %>%
 ```
 
 
-Turn URL into a list-column
+Turn URL, project, gradauth, & undergradauth into list-columns
 
 ```{r}
 pubs <- pubs %>% 
-  mutate(across(URL, ~ str_split(.x, " and ")))
+  mutate(across(URL, ~ str_split(.x, " and ")),
+         across(c(project, contains("gradauth")), ~ str_split(.x, ",")))
 ```
 
 
@@ -148,25 +149,25 @@ pubs <- pubs %>%
 Add asterisks to `AUTHOR` (\* = grad/professional student co-author, \*\* = undergrad)
 
 ```{r}
+addStar <- function(x, oneStar, twoStar, starAfter=c("last","end")) {
+  library(dplyr)
+  starAfter <- match.arg(starAfter)
+  star <- case_when(str_remove(x, ",.+") %in% oneStar ~ "*",
+                    str_remove(x, ",.+") %in% twoStar ~ "**",
+                    TRUE ~ "")
+  
+  if (starAfter=="last") {
+    ##Last*, First
+    str_replace(x, ",", paste0(star, ","))
+  } else {
+    ##Last, First*
+    paste0(x, star)
+  }
+}
+
 pubs <- pubs %>%
-  mutate(
-    ##gradauth / undergradauth: format as regex
-    across(contains("gradauth"), 
-           ~ str_replace_all(.x, ",", "|") %>% 
-             paste0("^", .)),
-    AUTHOR = AUTHOR %>% 
-      ##Add * for grad authors
-      map2(gradauth,
-           ~ if_else(str_detect(.x, .y),
-                     str_replace(.x, ",", "*,"), ##Add star to last name
-                     # paste0(.x, "*"),          ##Add star to end of name
-                     .x)) %>% 
-      ##Add ** for undergrad authors
-      map2(undergradauth,
-           ~ if_else(str_detect(.x, .y),
-                     str_replace(.x, ",", "**,"), ##Add stars to last name
-                     # paste0(.x, "**"),          ##Add stars to end of name
-                     .x)))
+  mutate(across(AUTHOR, ~ pmap(list(x=.x, oneStar=gradauth, twoStar=undergradauth),
+                               addStar)))
 ```
 
 
@@ -267,7 +268,6 @@ Handle `\`, `\textit{}`
 
 # Write Rds
 
-Turn `project` into a list-col
 
 
 # Write csv
