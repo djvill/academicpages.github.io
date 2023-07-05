@@ -21,3 +21,8 @@ cat My-Pubs.bib | rmnewline | rmnewline > My-Pubs.bib
 
 ##Remove empty folder
 rm -r My-Pubs
+
+##Right now, this command errors out with "Error in `pivot_wider()`: Column `name` doesn't exist." 
+##	and for some reason yields an empty My-Pubs.bib
+# ##Convert .bib to other formats
+# Rscript -e "rmarkdown::render('BibTeX-Conversions.Rmd')"

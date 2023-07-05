@@ -2,7 +2,7 @@
 
 For data-fied info about publications.
 This includes non-peer-reviewed publications (but not presentations) and publications in progress.
-Data will be used for CV page, projects page, and publications page, with slightly different displays for each.
+Data will be used for CV page, themes page, and publications page, with slightly different displays for each.
 It'll also be used for an output BibTeX file that contains only published works (sans book reviews) and strips extra fields.
 
 
@@ -37,7 +37,7 @@ Better file names and organization:
 - Run `format.sh`
 
 
-## BibTeX format
+## BibTeX format for `My-Pubs.bib`
 
 The usual Zotero export, plus a few changes.
 
@@ -70,14 +70,15 @@ On the BibTeX side, these show up within the `note` field;
 the `format.sh` post-processing script turns newlines into `;;;`.
 
 
-- `dontinclude`: Use `TRUE` to exclude this publication from BibTeX (useful if there's no other good filter, like for a book review)
-- `project`: Larger project(s) containing the publication. If multiple, separate with commas. If blank, project will go in "miscellaneous"
+Use `TRUE` to exclude this publication from BibTeX (useful if there's no other good filter, like for a book review)
+- `themes`: Larger theme(s) containing the publication, to be used for "Research themes" page. If multiple, separate with commas
 - `repo`: Linked repository (code and optionally data), either URL or BibTeX key
 - `data`: URL for open data (only use if there's no `repo`)
 - `gradauth`: Graduate student co-author(s): comma-separated last names
 - `undergradauth`: Undergraduate co-author(s): comma-separated last names
 - `heading`: CV heading to place publication under (only if needed for override; see following section)
 - `pubnote`: Other notes about authorship/peer review to put in a footnote (i.e., to motivate credit for counting publications)
+- `exclude`: Scope to exclude this item from, overriding defaults: "themes", "bibtex", "both", or blank. All items appear on the CV. "Nice" output BibTeX file excludes works in progress (except for in-press) and book reviews by default. Excluding from themes ("Research themes" page) is useful for working papers that appear in proceedings.
 - `DOI` (only for item types for which Zotero doesn't provide a DOI field [e.g., chapters]). The BibTeX converter plunks this into the normal `DOI` BibTeX field
 
 Any fields other than these will be discarded by `BibTeX-to-CSV.Rmd`
@@ -124,5 +125,4 @@ if (!(year %in% c("in prep", "under review", "revisions in prep",
 
 The `bib2df` R package doesn't like newlines within fields, so `format.sh` converts field-internal newlines to `;;;`.
 So far, these only show up in the `note` field (separating different extra fields) and `abstract` (paragraph breaks).
-
 

@@ -17,16 +17,16 @@ This document contains code that takes a bibfile (in this case,
 My-Pubs.bib) and outputs several files for different purposes:
 
 - **All-Pubs.Rds**: An Rds file that has info needed to organize
-  citations & links for the website (CV, project pages, etc.). This will
-  take the place of `publications.tsv` in the
+  citations & links for the website (CV, “Research themes” page, etc.).
+  This will take the place of `publications.tsv` in the
   publication-data-processing workflow
 - **All-Pubs.csv**: A fallback csv file with the info in All-Pubs.Rds
 - **All-Pubs.bib**: A bibfile that contains the info that will be turned
   into formatted citations, but doesn’t have the info from the “extra”
   field in My-Pubs.bib
 - **Villarreal-Pubs.bib**: A ‘nice’ bibfile, meant for folks who want to
-  download my bibliography, that excludes book reviews and works in
-  progress
+  download my bibliography, that excludes book reviews, works in
+  progress, and any publications marked with `exclude: bibtex`.
 
 # Parse input bibfile as dataframe
 
@@ -44,8 +44,8 @@ Handle extra fields
 
 ``` r
 ##Permissible extra fields
-extraFields <- c("dontinclude", "project", "repo", "data", "gradauth", 
-                 "undergradauth", "heading", "pubnote")
+extraFields <- c("themes", "repo", "data", "gradauth", 
+                 "undergradauth", "heading", "pubnote", "exclude")
 
 ##Parse vector of extras into list of dataframes
 parse_extra <- function(x, permissible=extraFields) {
@@ -116,12 +116,12 @@ pubs <- pubs %>%
          across(FILE, ~ if_else(endsWith(.x, ".pdf"), .x, NA_character_)))
 ```
 
-Turn `URL`, `project`, `gradauth`, & `undergradauth` into list-columns
+Turn `URL`, `themes`, `gradauth`, & `undergradauth` into list-columns
 
 ``` r
 pubs <- pubs %>% 
   mutate(across(URL, ~ str_split(.x, " and ")),
-         across(c(project, contains("gradauth")), ~ str_split(.x, ",")))
+         across(c(themes, contains("gradauth")), ~ str_split(.x, ",")))
 ```
 
 Replace temporary `;;;` with newlines
@@ -135,7 +135,7 @@ Add asterisks to `AUTHOR` (\* = grad/professional student co-author,
 \*\* = undergrad)
 
 ``` r
-addStar <- function(x, oneStar, twoStar, starAfter=c("last","end")) {
+addStar <- function(x, oneStar, twoStar, starAfter=c("end","last")) {
   library(dplyr)
   starAfter <- match.arg(starAfter)
   star <- case_when(str_remove(x, ",.+") %in% oneStar ~ "*",
@@ -278,12 +278,14 @@ pubs %>%
   df2bib(params$wholebib)
 ```
 
-Nice version excluding some categories:
+Nice version excluding some categories and items explictly excluded:
 
 ``` r
 pubs %>% 
   ##No reviews or WIP
-  filter(!(heading %in% c("Book reviews", "Works in progress"))) %>%
+  filter(!(heading %in% c("Book reviews", "Works in progress")),
+         ##No items with BibTeX exclusion override
+         !(exclude %in% c("bibtex", "both"))) %>%
   ##Remove fields unpacked from NOTE
   select(matches("^[A-Z]+$", ignore.case=FALSE)) %>% 
   ##Write
