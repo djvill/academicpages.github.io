@@ -1,0 +1,35 @@
+/* ==========================================================================
+   DAN'S CUSTOM STYLESHEET
+   ========================================================================== */
+
+/* External links (page__content only) */
+/* https://stackoverflow.com/questions/5379752/css-style-external-links */
+.page__content a[href]:not(:where(
+  /* exclude hash only links */
+  [href^="#"],
+  /* exclude relative but not double slash only links */
+  [href^="/"]:not([href^="//"]),
+  /* domains to exclude */
+  [href*="//stackoverflow.com"],
+  /* subdomains to exclude */
+  [href*="//meta.stackoverflow.com"],
+  /* serving locally */
+  [href*="localhost"]
+)) {
+  color: $link-color-external;
+  
+  /* Add ↗️ after external links... */
+  &:after {
+    content: '↗️';
+	vertical-align: super;
+	line-height: 0.5;
+  }
+  
+  /* ...but not for social-icons */
+  .social-icons & {
+    &:after {
+	  content: '';
+	}
+  }
+}
+
