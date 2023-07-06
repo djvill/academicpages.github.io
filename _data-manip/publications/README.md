@@ -8,7 +8,7 @@ It'll also be used for an output BibTeX file that contains only published works 
 
 ## How to use
 
-### Initial setup
+### Initial setup (only need to do once)
 
 In Zotero, create Saved Search called `My-Pubs`:
 
@@ -29,12 +29,13 @@ Re-export My-Pubs saved search:
 	- _Format:_ BibTeX
 	- Tick _Export Files_ (nothing else)
 	- _Character Encoding:_ UTF-8
-- Save as `pubs/My-Pubs`
+- Save as `My-Pubs` in this folder
 
 
 Better file names and organization:
 
 - Run `format.sh`
+- Render `BibTeX-Conversions.Rmd`
 
 
 ## BibTeX format for `My-Pubs.bib`

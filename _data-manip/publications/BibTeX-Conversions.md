@@ -1,59 +1,49 @@
----
-title: "Process BibTeX file"
-author: "Dan Villarreal"
-date: "2023-06-29"
-output: github_document
-# output: 
-  # html_document:
-  #   code_folding: show
-  #   df_print: paged
-params:
-  inbib: My-Pubs.bib
-  wholebib: ../_publications/All-Pubs.bib
-  rds: ../_publications/All-Pubs.Rds
-  csv: ../_publications/All-Pubs.csv
-  nicebib: Villarreal-Pubs.bib
----
+Process BibTeX file
+================
+Dan Villarreal
+2023-06-29
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, comment="")
-
-library(tidyverse)
-library(bib2df)
-library(xfun)
-```
-
-```{css, echo=FALSE}
+<style type="text/css">
 /* Add scrollbars to long R input/output blocks */
 pre {
   max-height: 300px;
   overflow-y: auto;
 }
-```
+</style>
 
 # Intro
 
-This document contains code that takes a bibfile (in this case, `r params$inbib`) and outputs several files for different purposes:
+This document contains code that takes a bibfile (in this case,
+My-Pubs.bib) and outputs several files for different purposes:
 
-- **`r params$rds`**: An Rds file that has info needed to organize citations & links for the website (CV, "Research themes" page, etc.). This will take the place of `publications.tsv` in the publication-data-processing workflow
-- **`r params$csv`**: A fallback csv file with the info in `r params$rds`
-- **`r params$wholebib`**: A bibfile that contains the info that will be turned into formatted citations, but doesn't have the info from the "extra" field in `r params$inbib`
-- **`r params$nicebib`**: A 'nice' bibfile, meant for folks who want to download my bibliography, that excludes book reviews, works in progress, and any publications marked with `exclude: bibtex`.
-
-
+- \*\*../../\_publications/All-Pubs.Rds\*\*: An Rds file that has info
+  needed to organize citations & links for the website (CV, “Research
+  themes” page, etc.). This will take the place of `publications.tsv` in
+  the publication-data-processing workflow
+- \*\*../../\_publications/All-Pubs.csv\*\*: A fallback csv file with
+  the info in ../../\_publications/All-Pubs.Rds
+- \*\*../../\_publications/All-Pubs.bib\*\*: A bibfile that contains the
+  info that will be turned into formatted citations, but doesn’t have
+  the info from the “extra” field in My-Pubs.bib
+- **../../pubs/Villarreal-Pubs.bib**: A ‘nice’ bibfile, meant for folks
+  who want to download my bibliography, that excludes book reviews,
+  works in progress, and any publications marked with `exclude: bibtex`.
 
 # Parse input bibfile as dataframe
 
-Read BibTeX file as df (suppress inaccurate "NAs introduced by coercion" warning)
+Read BibTeX file as df (suppress inaccurate “NAs introduced by coercion”
+warning)
 
-```{r, warning=FALSE}
+``` r
 pubs <- bib2df(params$inbib)
 ```
 
+    Column `YEAR` contains character strings.
+                  No coercion to numeric applied.
 
 Handle extra fields
 
-```{r}
+``` r
 ##Permissible extra fields
 extraFields <- c("themes", "repo", "data", "gradauth", 
                  "undergradauth", "heading", "pubnote", "exclude")
@@ -87,10 +77,9 @@ pubs <- pubs %>%
   select(-"NA")
 ```
 
-
 Heading logic
 
-```{r}
+``` r
 patchYear <- tibble(YEAR = c("in prep", "under review", 
                              "revisions in prep", "revisions under review", 
                              "forthcoming"),
@@ -118,10 +107,9 @@ pubs <- pubs %>%
   rows_patch(patchCategory, "CATEGORY", unmatched="error")
 ```
 
-
 Handle PDF attachments (`FILE`)
 
-```{r}
+``` r
 pubs <- pubs %>% 
   ##Point FILE paths to website URL
   mutate(across(FILE, ~ paste0("/pubs/", .x)),
@@ -129,27 +117,25 @@ pubs <- pubs %>%
          across(FILE, ~ if_else(endsWith(.x, ".pdf"), .x, NA_character_)))
 ```
 
-
 Turn `URL`, `themes`, `gradauth`, & `undergradauth` into list-columns
 
-```{r}
+``` r
 pubs <- pubs %>% 
   mutate(across(URL, ~ str_split(.x, " and ")),
          across(c(themes, contains("gradauth")), ~ str_split(.x, ",")))
 ```
 
-
 Replace temporary `;;;` with newlines
 
-```{r}
+``` r
 pubs <- pubs %>% 
   mutate(across(where(is.atomic), ~ str_replace_all(.x, ";;;", "\n")))
 ```
 
+Add asterisks to `AUTHOR` (\* = grad/professional student co-author,
+\*\* = undergrad)
 
-Add asterisks to `AUTHOR` (\* = grad/professional student co-author, \*\* = undergrad)
-
-```{r}
+``` r
 addStar <- function(x, oneStar, twoStar, starAfter=c("end","last")) {
   library(dplyr)
   starAfter <- match.arg(starAfter)
@@ -171,10 +157,10 @@ pubs <- pubs %>%
                                addStar)))
 ```
 
+Specify sort orders for `heading` (based on CV ordering) and `YEAR` (to
+accommodate qualitative date codes)
 
-Specify sort orders for `heading` (based on CV ordering) and `YEAR` (to accommodate qualitative date codes)
-
-```{r}
+``` r
 ##Heading order (PhD dissertation is an outlier, will be handled separately)
 headingOrd <- c("PhD dissertation",
                 "Works in progress", "Peer-reviewed publications", 
@@ -197,32 +183,29 @@ pubs <- pubs %>%
                                  c(qualDates))))
 ```
 
-
-
 # Write Rds & csv files
 
 Write Rds file
 
-```{r}
+``` r
 saveRDS(pubs, params$rds)
 ```
 
+For csv file, collapse list-cols into character vectors, with entries
+separated by `|`:
 
-For csv file, collapse list-cols into character vectors, with entries separated by `|`: 
-
-```{r}
+``` r
 pubs %>% 
   mutate(across(!where(is.atomic), ~ map_chr(.x, paste, collapse="|"))) %>% 
   write.csv(params$csv, row.names=FALSE, na="")
 ```
 
-
-
 # Write BibTeX files
 
-Override `bib2df::df2bib()` to use UTF-8 encoding (via `xfun::write_utf8()`)
+Override `bib2df::df2bib()` to use UTF-8 encoding (via
+`xfun::write_utf8()`)
 
-```{r}
+``` r
 df2bib <- function (x, file = "", append = FALSE, allfields = TRUE) {
   library(bib2df)
   library(xfun)
@@ -286,11 +269,9 @@ df2bib <- function (x, file = "", append = FALSE, allfields = TRUE) {
 }
 ```
 
-
-
 Whole version with all categories of publication:
 
-```{r}
+``` r
 pubs %>% 
   ##Remove fields unpacked from NOTE
   select(matches("^[A-Z]+$", ignore.case=FALSE)) %>% 
@@ -298,10 +279,9 @@ pubs %>%
   df2bib(params$wholebib)
 ```
 
-
 Nice version excluding some categories and items explictly excluded:
 
-```{r}
+``` r
 pubs %>% 
   ##No reviews or WIP
   filter(!(heading %in% c("Book reviews", "Works in progress")),
@@ -313,10 +293,45 @@ pubs %>%
   df2bib(params$nicebib)
 ```
 
-
-
 # Session info
 
-```{r}
+``` r
 sessionInfo()
 ```
+
+    R version 4.3.1 (2023-06-16 ucrt)
+    Platform: x86_64-w64-mingw32/x64 (64-bit)
+    Running under: Windows 10 x64 (build 19045)
+
+    Matrix products: default
+
+
+    locale:
+    [1] LC_COLLATE=English_United States.utf8 
+    [2] LC_CTYPE=English_United States.1252   
+    [3] LC_MONETARY=English_United States.utf8
+    [4] LC_NUMERIC=C                          
+    [5] LC_TIME=English_United States.utf8    
+    system code page: 65001
+
+    time zone: America/New_York
+    tzcode source: internal
+
+    attached base packages:
+    [1] stats     graphics  grDevices utils     datasets  methods   base     
+
+    other attached packages:
+     [1] xfun_0.39       bib2df_1.1.2.0  lubridate_1.9.2 forcats_1.0.0  
+     [5] stringr_1.5.0   dplyr_1.1.2     purrr_1.0.1     readr_2.1.4    
+     [9] tidyr_1.3.0     tibble_3.2.1    ggplot2_3.4.2   tidyverse_2.0.0
+
+    loaded via a namespace (and not attached):
+     [1] gtable_0.3.3       compiler_4.3.1     Rcpp_1.0.10        tidyselect_1.2.0  
+     [5] scales_1.2.1       yaml_2.3.7         fastmap_1.1.1      R6_2.5.1          
+     [9] generics_0.1.3     knitr_1.43         munsell_0.5.0      pillar_1.9.0      
+    [13] tzdb_0.4.0         rlang_1.1.1        utf8_1.2.3         stringi_1.7.12    
+    [17] timechange_0.2.0   cli_3.6.1          withr_2.5.0        magrittr_2.0.3    
+    [21] digest_0.6.31      grid_4.3.1         hms_1.1.3          lifecycle_1.0.3   
+    [25] vctrs_0.6.3        humaniformat_0.6.0 evaluate_0.21      glue_1.6.2        
+    [29] fansi_1.0.4        colorspace_2.1-0   httr_1.4.6         rmarkdown_2.22    
+    [33] tools_4.3.1        pkgconfig_2.0.3    htmltools_0.5.5   
