@@ -1,0 +1,48 @@
+---
+title: Research themes README
+output: html_document
+---
+
+Here's how I generated the `.md` templates in this directory.
+
+```{r, echo=TRUE, results='hide'}
+library(stringr)
+library(purrr)
+library(dplyr)
+library(tidyr)
+
+##Get vector of theme keys
+themes <- dir("../../_bibliography", ".+.bib") %>% 
+  str_remove(".bib") %>% 
+  str_subset("All", negate=TRUE)
+
+##Construct doc from key & short key
+tibble(key = themes) %>% 
+  mutate(filename = paste0(key, ".md"),
+         short = key %>% 
+           str_split("-") %>% 
+           map(str_sub, 1, 1) %>% 
+           map_chr(paste, collapse="-"),
+         doc = str_glue("---",
+                        "title: DESCRIPTIVE-TITLE",
+                        "theme-key: {key}",
+                        "---",
+                        "",
+                        "",
+                        "NARRATIVE DESCRIPTION, USING {{% cite BIBTEXKEY --prefix {short} %}}",
+                        "",
+                        "References",
+                        "----------",
+                        "",
+                        "{{% bibliography --file {key} --prefix {short} %}}",
+                        .sep="\n")) %>% 
+  ##Write themes to .md files
+  pull(doc, filename) %>% 
+  imap(writeLines)
+```
+
+
+
+```{r, echo=TRUE, comment=""}
+sessionInfo()
+```
