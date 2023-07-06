@@ -9,9 +9,9 @@ output: github_document
   #   df_print: paged
 params:
   inbib: My-Pubs.bib
-  wholebib: All-Pubs.bib
-  rds: All-Pubs.Rds
-  csv: All-Pubs.csv
+  wholebib: ../_publications/All-Pubs.bib
+  rds: ../_publications/All-Pubs.Rds
+  csv: ../_publications/All-Pubs.csv
   nicebib: Villarreal-Pubs.bib
 ---
 

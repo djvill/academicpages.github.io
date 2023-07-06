@@ -273,3 +273,15 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+
+# Citations/bibliography
+# See https://github.com/inukshuk/jekyll-scholar
+scholar:
+  bibliography: All-Pubs.bib
+  style: _bibliography/Unified-Stylesheet_DV.csl
+  source: ./_bibliography
+  
+  locale: en
+  
+  sort_by: year,author,title
+  order: ascending
