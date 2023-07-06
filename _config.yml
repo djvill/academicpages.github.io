@@ -110,6 +110,7 @@ exclude:
   - node_modules
   - package.json
   - tmp
+  - Scratchpads
   - vendor
 keep_files:
   - .git
@@ -278,10 +279,17 @@ compress_html:
 # See https://github.com/inukshuk/jekyll-scholar
 scholar:
   bibliography: All-Pubs.bib
-  style: _bibliography/Unified-Stylesheet_DV.csl
   source: ./_bibliography
+  style: _bibliography/Unified-Stylesheet_DV.csl
   
   locale: en
   
   sort_by: year,author,title
   order: ascending
+
+  bibliography_item_attributes: 
+    class: bibentry
+
+
+# Serve port
+port: 1111
