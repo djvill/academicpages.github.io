@@ -278,7 +278,7 @@ compress_html:
 # Citations/bibliography
 # See https://github.com/inukshuk/jekyll-scholar
 scholar:
-  bibliography: All-Pubs.bib
+  bibliography: '*.bib'
   source: ./_bibliography
   style: _bibliography/Unified-Stylesheet_DV.csl
   

@@ -35,7 +35,7 @@ Re-export My-Pubs saved search:
 Better file names and organization:
 
 - Run `format.sh`
-- Render `BibTeX-Conversions.Rmd`
+- Add description to applicable `_data/research-themes/`
 
 
 ## BibTeX format for `My-Pubs.bib`

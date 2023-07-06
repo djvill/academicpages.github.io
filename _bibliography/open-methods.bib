@@ -1,0 +1,92 @@
+@Misc{villarreal_how_2019,
+  AUTHOR = {Villarreal, Dan and Clark, Lynn and Hay, Jennifer and Watson, Kevin},
+  TITLE = {How to train your classifier},
+  YEAR = {2019},
+  ABSTRACT = {(First paragraph) This guide walks readers through the process of training a random-forest classifier for automated coding of sociophonetic variation, using the statistical computing language R (R Core Team, 2018) and the packages ranger (Wright \& Ziegler, 2017) and caret (Kuhn, 2018). This guide is intended to be a companion to our 2020 Laboratory Phonology article “From categories to gradience: Auto-coding sociophonetic variation with random forests”, and it recreates the classifier of Southland English non-prevocalic /r/ discussed in the article. By consulting the R Markdown file that generated this document, readers can run the code on their own systems to recreate the /r/ classifier.},
+  URL = {https://nzilbb.github.io/How-to-Train-Your-Classifier/How_to_Train_Your_Classifier.html},
+  HEADING = {Open research tools}
+}
+
+
+@Article{villarreal_categories_2020,
+  AUTHOR = {Villarreal, Dan and Clark, Lynn and Hay, Jennifer and Watson, Kevin},
+  JOURNAL = {Laboratory Phonology},
+  NUMBER = {6},
+  PAGES = {1--31},
+  TITLE = {From categories to gradience: {Auto}-coding sociophonetic variation with random forests},
+  VOLUME = {11},
+  YEAR = {2020},
+  ABSTRACT = {The time-consuming nature of coding sociophonetic variables that are typically treated as categorical represents an impediment to addressing research questions around these variables that require large volumes of data. In this paper, we apply a machine learning method, random forest classification (Breiman, 2001), to automate coding (categorical prediction) of two English sociophonetic variables traditionally treated as categorical, non-prevocalic /r/ and word-medial intervocalic /t/, based on tokens’ acoustic signatures. We found good performance for binary classifiers of non-prevocalic /r/ (Absent versus Present) and medial /t/ (Voiced versus Voiceless), but not for medial /t/ with a six-way coding distinction (largely due to some codes being sparsely represented in the training data). This method also yields rankings of acoustic measures in terms of importance in classification. Beyond any individual measures, this method generates probabilistic predictions of variation (classifier probabilities) that represent a composite of the acoustic cues fed into the model. In a listening experiment, we found that not only did classifier probabilities significantly capture gradience in trained listeners’ perceptions of rhoticity, they better predicted listeners’ perceptions than individual acoustic measures. This method thus represents a new approach to reconciling the categorical and continuous dimensions of sociophonetic variation.},
+  FILE = {/pubs/Villarreal et al. - 2020 - From categories to gradience Auto-coding sociopho.pdf},
+  DOI = {10.5334/labphon.216},
+  HEADING = {Peer-reviewed publications}
+}
+
+
+@Incollection{villarreal_open_in_press,
+  ADDRESS = {Oxford},
+  AUTHOR = {Villarreal, Dan and Collister, Lauren},
+  BOOKTITLE = {Decolonizing linguistics},
+  PUBLISHER = {Oxford University Press},
+  SERIES = {Oxford {Collections} in {Linguistics}},
+  TITLE = {Open {Methods}: {Decolonizing} (or not) research methods in linguistics},
+  YEAR = {in press},
+  ABSTRACT = {Open Methods are resources that pertain to at least one stage in the linguistics research process and are available free of charge to all who can find them (e.g., Boersma \& Weenink 2021; Kendall \& Farrington 2020; Styler 2021). We describe the current state of Open Methods in linguistics, including benefits and structural barriers to further development. Then, in the spirit of "those who do not learn from history are doomed to repeat it", we discuss how Open Access (a longer-developed cousin to Open Methods that focuses on publishing research) fails to adequately serve research(ers) in the global context despite its agreeable basic premise (Meagher 2021). We critically assess whether Open Methods can help decolonize linguistics research—or whether it merely allows already-privileged linguistics to accrue greater privilege. We ultimately present a cautiously optimistic model for anticolonial Open Methods in linguistics, with recommendations and examples of practices and policies throughout.},
+  COPYRIGHT = {All rights reserved},
+  HEADING = {Peer-reviewed publications},
+  PUBNOTE = {This is an externally peer-reviewed chapter in a larger edited collection; chapter proposals had to be submitted to and accepted by collection editors.}
+}
+
+
+@Unpublished{collister_spectrum_2022,
+  AUTHOR = {Collister, Lauren and Villarreal, Dan},
+  MONTH = {},
+  TITLE = {Spectrum of {Open} {Methods}},
+  YEAR = {2022},
+  ABSTRACT = {In order for Open Methods to mitigate resource barriers to linguistics research, the Open Methods themselves must not act as or require substantial resource barriers to access and use. We emphasize "substantial" here because there is no such thing as an absence of resource barriers; just because Open Method is freely available online doesn't make it accessible to everyone. To evaluate this aspect of Open Methods, we build on similar widely-used tools in the Open Access space to create a "Spectrum of Open Methods". This tool is not meant to gatekeep open methods; a method that's imperfect but published is always more open than a method that never gets published because it's not perfect yet. Rather, the Spectrum of Open Methods is intended to inspire creators to make adjustments to their resources to make them as open as possible. To illustrate, a Case Study is included where Dan Villarreal has deployed the Spectrum of Open Methods to one of his projects and identified avenues for future development and improvement. We developed this tool while working on a chapter titled "Open Methods: Decolonizing (or not) research methods in linguistics" for the forthcoming volume Decolonizing Linguistics edited by Anne Charity Hudley, Christine Mallinson, and Mary Bucholtz and published by Oxford University Press. We welcome iterations of this Spectrum of Open Methods with edits, adaptations to other fields, or discipline-specific adjustments.},
+  DOI = {10.5281/zenodo.6546894},
+  URL = {https://zenodo.org/record/6546894},
+  COPYRIGHT = {All rights reserved},
+  LANGUAGE = {eng},
+  URLDATE = {2022-05-13},
+  HEADING = {Open research tools}
+}
+
+
+@Article{villarreal_sociolinguistic_forthcoming,
+  AUTHOR = {Villarreal, Dan},
+  JOURNAL = {Linguistics Vanguard},
+  TITLE = {Sociolinguistic auto-coding has fairness problems too: {Measuring} and mitigating bias.},
+  YEAR = {forthcoming},
+  ABSTRACT = {Sociolinguistics researchers can use sociolinguistic auto-coding (SLAC) to predict humans’ hand-codes of sociolinguistic data. While auto-coding promises opportunities for greater efficiency, like other computational methods there are inherent concerns about this method’s fairness—whether it generates equally valid predictions for different speaker groups. This would be problematic for sociolinguistic work given the central importance of correlating speaker groups to differences in variable usage. The current study examines SLAC fairness through the lens of gender fairness in auto-coding Southland New Zealand English non-prevocalic /r/. First, given that there are multiple, mutually incompatible definitions of machine learning fairness, I argue that fairness for SLAC is best captured by two fairness definitions (overall accuracy equality and class accuracy equality) corresponding to three fairness metrics. Second, I empirically assess the extent to which SLAC is prone to unfairness. I find that a specific auto-coder described in previous literature performed poorly on all three fairness metrics. Third, to remedy these imbalances, I tested unfairness mitigation strategies on the same data. I find several strategies that reduced unfairness to virtually zero. I close by discussing what SLAC fairness means not just for auto-coding, but more broadly for how we conceptualize variation as an object of study.},
+  FILE = {/pubs/Villarreal - Sociolinguistic auto-coding has fairness problems .pdf},
+  COPYRIGHT = {All rights reserved},
+  HEADING = {Works in progress},
+  REPO = {@villarreal\_slac-fairness\_2023}
+}
+
+
+@Misc{villarreal_slac-fairness_2023,
+  AUTHOR = {Villarreal, Dan},
+  TITLE = {{SLAC}-{Fairness}: {Tools} to assess fairness and mitigate unfairness in sociolinguistic auto-coding},
+  YEAR = {2023},
+  ABSTRACT = {This GitHub repository is a companion to the paper "Sociolinguistic auto-coding has fairness problems too: Measuring and mitigating overlearning bias", forthcoming in \textit{Linguistics Vanguard}. In the paper, I investigate \textbf{sociolinguistic auto-coding (SLAC)} through the lens of \textbf{machine-learning fairness}. Just as some algorithms produce biased predictions by overlearning group characteristics, I find that the same is true for SLAC. As a result, I attempt \textbf{unfairness mitigation strategies (UMSs)} as techniques for removing gender bias in auto-coding predictions (without harming overall auto-coding performance too badly).
+
+What's the point of this repository?
+First, you can \textbf{reproduce} the analysis I performed for the \textit{Linguistics Vanguard} paper, using the same data and code that I did. Simply follow the analysis walkthrough tutorial.
+Second, you can also adapt this code to your own projects. You might want to use it if you want to (1) \textbf{assess fairness} for a pre-existing auto-coder and/or (2) create a \textbf{fair auto-coder} by testing unfairness mitigation strategies on your data.
+Finally, I invite comments, critiques, and questions about this code. I've made this code available for transparency's sake, so please don't hesitate to reach out!},
+  URL = {https://github.com/djvill/SLAC-Fairness, https://djvill.github.io/SLAC-Fairness/},
+  HEADING = {Open research tools}
+}
+
+
+@Misc{villarreal_vowel_2016,
+  AUTHOR = {Villarreal, Dan},
+  TITLE = {Vowel manipulation toolkit},
+  YEAR = {2016},
+  ABSTRACT = {This folder contains files useful for replicating the vowel manipulation methods used in my 2016 dissertation.},
+  URL = {https://github.com/djvill/Vowel-Manipulation},
+  HEADING = {Open research tools}
+}
+

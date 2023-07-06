@@ -16,15 +16,14 @@ pre {
 This document contains code that takes a bibfile (in this case,
 My-Pubs.bib) and outputs several files for different purposes:
 
-- \*\*../../\_publications/All-Pubs.Rds\*\*: An Rds file that has info
-  needed to organize citations & links for the website (CV, “Research
-  themes” page, etc.). This will take the place of `publications.tsv` in
-  the publication-data-processing workflow
-- \*\*../../\_publications/All-Pubs.csv\*\*: A fallback csv file with
-  the info in ../../\_publications/All-Pubs.Rds
-- \*\*../../\_publications/All-Pubs.bib\*\*: A bibfile that contains the
-  info that will be turned into formatted citations, but doesn’t have
-  the info from the “extra” field in My-Pubs.bib
+- **All-Pubs.Rds**: An Rds file that has info needed to organize
+  citations & links for the website (CV, “Research themes” page, etc.).
+  This will take the place of `publications.tsv` in the
+  publication-data-processing workflow
+- **All-Pubs.csv**: A fallback csv file with the info in All-Pubs.Rds
+- **All-Pubs.bib**: A bibfile that contains the info that will be turned
+  into formatted citations, but doesn’t have the info from the “extra”
+  field in My-Pubs.bib
 - **../../pubs/Villarreal-Pubs.bib**: A ‘nice’ bibfile, meant for folks
   who want to download my bibliography, that excludes book reviews,
   works in progress, and any publications marked with `exclude: bibtex`.
@@ -117,6 +116,13 @@ pubs <- pubs %>%
          across(FILE, ~ if_else(endsWith(.x, ".pdf"), .x, NA_character_)))
 ```
 
+Replace NA in `themes` with “other”
+
+``` r
+pubs <- pubs %>% 
+  replace_na(list(themes = "other"))
+```
+
 Turn `URL`, `themes`, `gradauth`, & `undergradauth` into list-columns
 
 ``` r
@@ -136,7 +142,7 @@ Add asterisks to `AUTHOR` (\* = grad/professional student co-author,
 \*\* = undergrad)
 
 ``` r
-addStar <- function(x, oneStar, twoStar, starAfter=c("end","last")) {
+addStar <- function(x, oneStar, twoStar, starAfter=c("last","end")) {
   library(dplyr)
   starAfter <- match.arg(starAfter)
   star <- case_when(str_remove(x, ",.+") %in% oneStar ~ "*",
@@ -188,7 +194,7 @@ pubs <- pubs %>%
 Write Rds file
 
 ``` r
-saveRDS(pubs, params$rds)
+saveRDS(pubs, file.path(params$outfolder, params$outrds))
 ```
 
 For csv file, collapse list-cols into character vectors, with entries
@@ -197,7 +203,7 @@ separated by `|`:
 ``` r
 pubs %>% 
   mutate(across(!where(is.atomic), ~ map_chr(.x, paste, collapse="|"))) %>% 
-  write.csv(params$csv, row.names=FALSE, na="")
+  write.csv(file.path(params$outfolder, params$outcsv), row.names=FALSE, na="")
 ```
 
 # Write BibTeX files
@@ -276,7 +282,24 @@ pubs %>%
   ##Remove fields unpacked from NOTE
   select(matches("^[A-Z]+$", ignore.case=FALSE)) %>% 
   ##Write
-  df2bib(params$wholebib)
+  df2bib(file.path(params$outfolder, params$outbib))
+```
+
+Individual bibfiles for each theme:
+
+``` r
+pubs %>% 
+  ##No reviews
+  filter(heading != "Book reviews",
+         ##No WIP, unless accepted ("forthcoming")
+         !(YEAR %in% c("in prep", "under review", 
+                       "revisions in prep", "revisions under review")),
+         ##No items with themes exclusion override
+         !(exclude %in% c("themes", "both"))) %>% 
+  unnest(themes) %>% 
+  group_by(themes) %>% 
+  group_walk(~ df2bib(.x,
+                      file.path(params$outfolder, paste0(.y$themes, ".bib"))))
 ```
 
 Nice version excluding some categories and items explictly excluded:

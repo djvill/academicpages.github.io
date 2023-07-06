@@ -1,0 +1,67 @@
+@Inproceedings{villarreal_modelling_2019,
+  ADDRESS = {Melbourne},
+  AUTHOR = {Villarreal, Dan and Clark, Lynn and Hay, Jennifer},
+  EDITOR = {Calhoun, Sasha and Escudero, Paola and Tabain, Marija and Warren, Paul},
+  PAGES = {1893--1897},
+  TITLE = {Modelling gradience in {English} /r/ via statistical classification},
+  YEAR = {2019},
+  ABSTRACT = {This experiment assessed the validity of a statistical classification method for automated coding of sociophonetic variables, in particular the presence vs. absence of English non-prevocalic /r/. A random forest classifier was trained on 180 acoustic measures from 5,355 tokens of /r/ (hand-coded as Present or Absent) in a variety of English with variable rhoticity; the classifier achieved 87.9\% accuracy on training data. The classifier was then used to predict the probability of /r/ presence in 32,099 additional tokens from the same variety.
+
+Eleven phonetically trained listeners judged 60 classifier-coded tokens as Present or Absent. Judgment results indicated a significant positive linear relationship between classifier probability and human judgments; classifier probability also outperformed individual acoustic measures (e.g., F3 minimum) in predicting human judgments. These results both validate this random forest classifier method for automated coding of sociophonetic variables and indicate the viability of modelling phonetic variation using classifier probability},
+  FILE = {/pubs/Villarreal et al. - 2019 - Modelling gradience in English r via statistical.pdf},
+  HEADING = {Publications in conference proceedings}
+}
+
+
+@Misc{villarreal_how_2019,
+  AUTHOR = {Villarreal, Dan and Clark, Lynn and Hay, Jennifer and Watson, Kevin},
+  TITLE = {How to train your classifier},
+  YEAR = {2019},
+  ABSTRACT = {(First paragraph) This guide walks readers through the process of training a random-forest classifier for automated coding of sociophonetic variation, using the statistical computing language R (R Core Team, 2018) and the packages ranger (Wright \& Ziegler, 2017) and caret (Kuhn, 2018). This guide is intended to be a companion to our 2020 Laboratory Phonology article “From categories to gradience: Auto-coding sociophonetic variation with random forests”, and it recreates the classifier of Southland English non-prevocalic /r/ discussed in the article. By consulting the R Markdown file that generated this document, readers can run the code on their own systems to recreate the /r/ classifier.},
+  URL = {https://nzilbb.github.io/How-to-Train-Your-Classifier/How_to_Train_Your_Classifier.html},
+  HEADING = {Open research tools}
+}
+
+
+@Article{villarreal_categories_2020,
+  AUTHOR = {Villarreal, Dan and Clark, Lynn and Hay, Jennifer and Watson, Kevin},
+  JOURNAL = {Laboratory Phonology},
+  NUMBER = {6},
+  PAGES = {1--31},
+  TITLE = {From categories to gradience: {Auto}-coding sociophonetic variation with random forests},
+  VOLUME = {11},
+  YEAR = {2020},
+  ABSTRACT = {The time-consuming nature of coding sociophonetic variables that are typically treated as categorical represents an impediment to addressing research questions around these variables that require large volumes of data. In this paper, we apply a machine learning method, random forest classification (Breiman, 2001), to automate coding (categorical prediction) of two English sociophonetic variables traditionally treated as categorical, non-prevocalic /r/ and word-medial intervocalic /t/, based on tokens’ acoustic signatures. We found good performance for binary classifiers of non-prevocalic /r/ (Absent versus Present) and medial /t/ (Voiced versus Voiceless), but not for medial /t/ with a six-way coding distinction (largely due to some codes being sparsely represented in the training data). This method also yields rankings of acoustic measures in terms of importance in classification. Beyond any individual measures, this method generates probabilistic predictions of variation (classifier probabilities) that represent a composite of the acoustic cues fed into the model. In a listening experiment, we found that not only did classifier probabilities significantly capture gradience in trained listeners’ perceptions of rhoticity, they better predicted listeners’ perceptions than individual acoustic measures. This method thus represents a new approach to reconciling the categorical and continuous dimensions of sociophonetic variation.},
+  FILE = {/pubs/Villarreal et al. - 2020 - From categories to gradience Auto-coding sociopho.pdf},
+  DOI = {10.5334/labphon.216},
+  HEADING = {Peer-reviewed publications}
+}
+
+
+@Article{villarreal_sociolinguistic_forthcoming,
+  AUTHOR = {Villarreal, Dan},
+  JOURNAL = {Linguistics Vanguard},
+  TITLE = {Sociolinguistic auto-coding has fairness problems too: {Measuring} and mitigating bias.},
+  YEAR = {forthcoming},
+  ABSTRACT = {Sociolinguistics researchers can use sociolinguistic auto-coding (SLAC) to predict humans’ hand-codes of sociolinguistic data. While auto-coding promises opportunities for greater efficiency, like other computational methods there are inherent concerns about this method’s fairness—whether it generates equally valid predictions for different speaker groups. This would be problematic for sociolinguistic work given the central importance of correlating speaker groups to differences in variable usage. The current study examines SLAC fairness through the lens of gender fairness in auto-coding Southland New Zealand English non-prevocalic /r/. First, given that there are multiple, mutually incompatible definitions of machine learning fairness, I argue that fairness for SLAC is best captured by two fairness definitions (overall accuracy equality and class accuracy equality) corresponding to three fairness metrics. Second, I empirically assess the extent to which SLAC is prone to unfairness. I find that a specific auto-coder described in previous literature performed poorly on all three fairness metrics. Third, to remedy these imbalances, I tested unfairness mitigation strategies on the same data. I find several strategies that reduced unfairness to virtually zero. I close by discussing what SLAC fairness means not just for auto-coding, but more broadly for how we conceptualize variation as an object of study.},
+  FILE = {/pubs/Villarreal - Sociolinguistic auto-coding has fairness problems .pdf},
+  COPYRIGHT = {All rights reserved},
+  HEADING = {Works in progress},
+  REPO = {@villarreal\_slac-fairness\_2023}
+}
+
+
+@Misc{villarreal_slac-fairness_2023,
+  AUTHOR = {Villarreal, Dan},
+  TITLE = {{SLAC}-{Fairness}: {Tools} to assess fairness and mitigate unfairness in sociolinguistic auto-coding},
+  YEAR = {2023},
+  ABSTRACT = {This GitHub repository is a companion to the paper "Sociolinguistic auto-coding has fairness problems too: Measuring and mitigating overlearning bias", forthcoming in \textit{Linguistics Vanguard}. In the paper, I investigate \textbf{sociolinguistic auto-coding (SLAC)} through the lens of \textbf{machine-learning fairness}. Just as some algorithms produce biased predictions by overlearning group characteristics, I find that the same is true for SLAC. As a result, I attempt \textbf{unfairness mitigation strategies (UMSs)} as techniques for removing gender bias in auto-coding predictions (without harming overall auto-coding performance too badly).
+
+What's the point of this repository?
+First, you can \textbf{reproduce} the analysis I performed for the \textit{Linguistics Vanguard} paper, using the same data and code that I did. Simply follow the analysis walkthrough tutorial.
+Second, you can also adapt this code to your own projects. You might want to use it if you want to (1) \textbf{assess fairness} for a pre-existing auto-coder and/or (2) create a \textbf{fair auto-coder} by testing unfairness mitigation strategies on your data.
+Finally, I invite comments, critiques, and questions about this code. I've made this code available for transparency's sake, so please don't hesitate to reach out!},
+  URL = {https://github.com/djvill/SLAC-Fairness, https://djvill.github.io/SLAC-Fairness/},
+  HEADING = {Open research tools}
+}
+

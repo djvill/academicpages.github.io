@@ -1,0 +1,57 @@
+@Incollection{villarreal_open_in_press,
+  ADDRESS = {Oxford},
+  AUTHOR = {Villarreal, Dan and Collister, Lauren},
+  BOOKTITLE = {Decolonizing linguistics},
+  PUBLISHER = {Oxford University Press},
+  SERIES = {Oxford {Collections} in {Linguistics}},
+  TITLE = {Open {Methods}: {Decolonizing} (or not) research methods in linguistics},
+  YEAR = {in press},
+  ABSTRACT = {Open Methods are resources that pertain to at least one stage in the linguistics research process and are available free of charge to all who can find them (e.g., Boersma \& Weenink 2021; Kendall \& Farrington 2020; Styler 2021). We describe the current state of Open Methods in linguistics, including benefits and structural barriers to further development. Then, in the spirit of "those who do not learn from history are doomed to repeat it", we discuss how Open Access (a longer-developed cousin to Open Methods that focuses on publishing research) fails to adequately serve research(ers) in the global context despite its agreeable basic premise (Meagher 2021). We critically assess whether Open Methods can help decolonize linguistics research—or whether it merely allows already-privileged linguistics to accrue greater privilege. We ultimately present a cautiously optimistic model for anticolonial Open Methods in linguistics, with recommendations and examples of practices and policies throughout.},
+  COPYRIGHT = {All rights reserved},
+  HEADING = {Peer-reviewed publications},
+  PUBNOTE = {This is an externally peer-reviewed chapter in a larger edited collection; chapter proposals had to be submitted to and accepted by collection editors.}
+}
+
+
+@Unpublished{collister_spectrum_2022,
+  AUTHOR = {Collister, Lauren and Villarreal, Dan},
+  MONTH = {},
+  TITLE = {Spectrum of {Open} {Methods}},
+  YEAR = {2022},
+  ABSTRACT = {In order for Open Methods to mitigate resource barriers to linguistics research, the Open Methods themselves must not act as or require substantial resource barriers to access and use. We emphasize "substantial" here because there is no such thing as an absence of resource barriers; just because Open Method is freely available online doesn't make it accessible to everyone. To evaluate this aspect of Open Methods, we build on similar widely-used tools in the Open Access space to create a "Spectrum of Open Methods". This tool is not meant to gatekeep open methods; a method that's imperfect but published is always more open than a method that never gets published because it's not perfect yet. Rather, the Spectrum of Open Methods is intended to inspire creators to make adjustments to their resources to make them as open as possible. To illustrate, a Case Study is included where Dan Villarreal has deployed the Spectrum of Open Methods to one of his projects and identified avenues for future development and improvement. We developed this tool while working on a chapter titled "Open Methods: Decolonizing (or not) research methods in linguistics" for the forthcoming volume Decolonizing Linguistics edited by Anne Charity Hudley, Christine Mallinson, and Mary Bucholtz and published by Oxford University Press. We welcome iterations of this Spectrum of Open Methods with edits, adaptations to other fields, or discipline-specific adjustments.},
+  DOI = {10.5281/zenodo.6546894},
+  URL = {https://zenodo.org/record/6546894},
+  COPYRIGHT = {All rights reserved},
+  LANGUAGE = {eng},
+  URLDATE = {2022-05-13},
+  HEADING = {Open research tools}
+}
+
+
+@Article{villarreal_sociolinguistic_forthcoming,
+  AUTHOR = {Villarreal, Dan},
+  JOURNAL = {Linguistics Vanguard},
+  TITLE = {Sociolinguistic auto-coding has fairness problems too: {Measuring} and mitigating bias.},
+  YEAR = {forthcoming},
+  ABSTRACT = {Sociolinguistics researchers can use sociolinguistic auto-coding (SLAC) to predict humans’ hand-codes of sociolinguistic data. While auto-coding promises opportunities for greater efficiency, like other computational methods there are inherent concerns about this method’s fairness—whether it generates equally valid predictions for different speaker groups. This would be problematic for sociolinguistic work given the central importance of correlating speaker groups to differences in variable usage. The current study examines SLAC fairness through the lens of gender fairness in auto-coding Southland New Zealand English non-prevocalic /r/. First, given that there are multiple, mutually incompatible definitions of machine learning fairness, I argue that fairness for SLAC is best captured by two fairness definitions (overall accuracy equality and class accuracy equality) corresponding to three fairness metrics. Second, I empirically assess the extent to which SLAC is prone to unfairness. I find that a specific auto-coder described in previous literature performed poorly on all three fairness metrics. Third, to remedy these imbalances, I tested unfairness mitigation strategies on the same data. I find several strategies that reduced unfairness to virtually zero. I close by discussing what SLAC fairness means not just for auto-coding, but more broadly for how we conceptualize variation as an object of study.},
+  FILE = {/pubs/Villarreal - Sociolinguistic auto-coding has fairness problems .pdf},
+  COPYRIGHT = {All rights reserved},
+  HEADING = {Works in progress},
+  REPO = {@villarreal\_slac-fairness\_2023}
+}
+
+
+@Misc{villarreal_slac-fairness_2023,
+  AUTHOR = {Villarreal, Dan},
+  TITLE = {{SLAC}-{Fairness}: {Tools} to assess fairness and mitigate unfairness in sociolinguistic auto-coding},
+  YEAR = {2023},
+  ABSTRACT = {This GitHub repository is a companion to the paper "Sociolinguistic auto-coding has fairness problems too: Measuring and mitigating overlearning bias", forthcoming in \textit{Linguistics Vanguard}. In the paper, I investigate \textbf{sociolinguistic auto-coding (SLAC)} through the lens of \textbf{machine-learning fairness}. Just as some algorithms produce biased predictions by overlearning group characteristics, I find that the same is true for SLAC. As a result, I attempt \textbf{unfairness mitigation strategies (UMSs)} as techniques for removing gender bias in auto-coding predictions (without harming overall auto-coding performance too badly).
+
+What's the point of this repository?
+First, you can \textbf{reproduce} the analysis I performed for the \textit{Linguistics Vanguard} paper, using the same data and code that I did. Simply follow the analysis walkthrough tutorial.
+Second, you can also adapt this code to your own projects. You might want to use it if you want to (1) \textbf{assess fairness} for a pre-existing auto-coder and/or (2) create a \textbf{fair auto-coder} by testing unfairness mitigation strategies on your data.
+Finally, I invite comments, critiques, and questions about this code. I've made this code available for transparency's sake, so please don't hesitate to reach out!},
+  URL = {https://github.com/djvill/SLAC-Fairness, https://djvill.github.io/SLAC-Fairness/},
+  HEADING = {Open research tools}
+}
+
