@@ -12,7 +12,7 @@ library(dplyr)
 library(tidyr)
 
 ##Get vector of theme keys
-themes <- dir("../../_bibliography", ".+.bib") %>% 
+themes <- dir("../_bibliography", ".+.bib") %>% 
   str_remove(".bib") %>% 
   str_subset("All", negate=TRUE)
 
