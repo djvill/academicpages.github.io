@@ -66,11 +66,11 @@ analytics:
 author:
   name             : "Dan Villarreal"
   avatar           : "NZILBB Square.png"
-  bio              : "Assistant Professor of Linguistics, University of Pittsburgh"
+  bio              : "Assistant Professor of Linguistics"
   # location         : "Pittsburgh, Pennsylvania, USA"
-  # employer         : "University of Pittsburgh"
+  employer         : "University of Pittsburgh"
   googlescholar    : "https://scholar.google.com/citations?user=joZcmBEAAAAJ&hl=en"
-  email            :
+  email            : d.vill@pitt.edu
   researchgate     : "https://www.researchgate.net/profile/Dan_Villarreal"
   uri              :
   bitbucket        :
