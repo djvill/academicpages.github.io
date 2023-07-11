@@ -1,0 +1,43 @@
+
+- key: pitt-asst-prof
+  startdate: August 2020
+  enddate: present
+  title: Assistant Professor
+  department: Department of Linguistics
+  university: University of Pittsburgh
+  location:
+    city: Pittsburgh
+    state: Pennsylvania
+    country: United States
+
+- key: nzilbb
+  startdate: August 2017
+  enddate: November 2019
+  title: Postdoctoral Fellow 
+  department: "New Zealand Institute of Language, Brain and Behaviour" 
+  university: University of Canterbury
+  location:
+    city: Christchurch
+    country: New Zealand
+
+- key: unr
+  startdate: August 2016
+  enddate: May 2017
+  title: Postdoctoral Fellow
+  department: Department of English
+  university: "University of Nevada, Reno"
+  location:
+    city: Reno 
+    state: Nevada
+    country: United States
+
+- key: deltech
+  startdate: May 2010
+  enddate: July 2010
+  title: Adjunct Instructor
+  department: Department of Mathematics
+  university: Delaware Technical and Community College
+  location:
+    city: Wilmington
+    state: Delaware
+    country: United States

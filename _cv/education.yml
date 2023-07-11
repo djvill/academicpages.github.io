@@ -1,0 +1,49 @@
+- degree: Ph.D.
+  university: "University of California, Davis"
+  location: "Davis, California"
+  date: June 2016
+  concentration: linguistics
+  thesis:
+    title: "The construction of social meaning: A matched-guise investigation of the California Vowel Shift"
+    type: dissertation
+  committee:
+    advisor: Robert Bayley
+    members: [Vaidehi Ramanathan, Valerie Fridland, Santiago Barreda]
+
+- degree: M.A.
+  university: "University of California, Davis"
+  location: "Davis, California"
+  date: June 2012
+  concentration: linguistics
+  thesis:
+    title: "Connecting production to judgments: Spanish learners, the metapragmatics of T/V, and L2 social identity"
+    type: thesis
+  committee:
+    advisor: Robert Bayley
+    members: [Vaidehi Ramanathan, Cecilia Colombi]
+
+- degree: B.A.
+  university: "The College of William & Mary"
+  location: "Williamsburg, Virginia"
+  date: May 2010 
+  concentration: [linguistics, mathematics]
+  thesis:
+    title: "Closing the communication gap between undergraduates and mathematics professors"
+    type: honors thesis
+    award: highest honors
+  committee:
+    advisor: Anne Charity Hudley
+    members: [Vaidehi Ramanathan, Cecilia Colombi]
+  awards: [_summa cum laude_, Phi Beta Kappa]
+
+- experience:
+  name: Linguistic Society of America Linguistic Institute
+  university: "University of California, Berkeley"
+  location: "Berkeley, California"
+  date: 2009
+
+- experience:
+  name: Linguistic Society of America Linguistic Institute
+  university: "University of Colorado, Boulder"
+  location: "Boulder, Colorado"
+  date: 2011

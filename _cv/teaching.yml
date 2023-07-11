@@ -1,0 +1,246 @@
+##Key
+# class: Updated course title (not necessarily title at teaching time)
+# oldname: Course title at teaching time
+# aka: Short description (if course title isn't descriptive enough)
+# modality: remote/hybrid (if absent, assume in-person)
+# oldnum: Course number(s) at teaching time
+# (Others self-explanatory)
+
+##Pitt
+- class: Linguistic Variation and Change
+  term: Fall 2020
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1269
+  level: undergraduate
+  modality: remote
+
+- class: Linguistic Variation and Change
+  term: Fall 2021
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1269
+  level: undergraduate
+  modality: hybrid
+
+- class: Linguistic Variation and Change
+  term: Fall 2022
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1269
+  level: undergraduate
+
+- class: Statistics for Research in Linguistics
+  term: Spring 2021
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: [LING 1810, LING 2010]
+  level: [undergraduate, graduate]
+  modality: remote
+
+- class: Statistics for Research in Linguistics
+  term: Spring 2022
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: [LING 1810, LING 2010]
+  level: [undergraduate, graduate]
+  modality: hybrid
+
+- class: Aspects of Sociolinguistics
+  term: Spring 2021
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1267
+  level: undergraduate
+  modality: remote
+
+- class: Aspects of Sociolinguistics
+  term: Spring 2022
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1267
+  level: undergraduate
+  modality: hybrid
+
+- class: Data Science for Research in Linguistics
+  oldname: Data Science for Linguists
+  term: Fall 2021
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 2020
+  oldnum: LING 2340
+  level: graduate
+  modality: hybrid
+
+- class: Data Science for Research in Linguistics
+  oldname: Data Science for Linguists
+  term: Fall 2022
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 2020
+  oldnum: LING 2340
+  level: graduate
+
+##UNR
+- class: Principles of Modern Grammar
+  aka: Upper-level syntax class
+  term: Fall 2016
+  university: "University of Nevada, Reno"
+  department: English
+  coursenum: ENG 411B
+  level: undergraduate
+
+- class: Principles of Modern Grammar
+  aka: Upper-level syntax class
+  term: Spring 2017
+  university: "University of Nevada, Reno"
+  department: English
+  coursenum: ENG 411B
+  level: undergraduate
+
+- class: Linguistics
+  aka: Intro
+  term: Fall 2016
+  university: "University of Nevada, Reno"
+  department: English
+  coursenum: ENG 412A
+  level: undergraduate
+
+- class: Global English and Communication
+  aka: Topics class
+  term: Spring 2017
+  university: "University of Nevada, Reno"
+  department: English
+  coursenum: ENG 413C
+  level: undergraduate
+
+  ##UCD
+- class: Global English and Communication
+  aka: Intro-level sociolinguistics class
+  term: Summer 2014
+  university: "University of California, Davis"
+  department: [Linguistics, Communication]
+  coursenum: [LIN 5, CMN 5]
+  level: undergraduate
+
+- class: Global English and Communication
+  aka: Intro-level sociolinguistics class
+  term: Fall 2014
+  university: "University of California, Davis"
+  department: [Linguistics, Communication]
+  coursenum: [LIN 5, CMN 5]
+  level: undergraduate
+
+  ##DTCC
+- class: Business Statistics II
+  term: Summer 2010
+  university: Delaware Technical and Community College
+  department: Mathematics
+  coursenum: MAT 256
+  level: undergraduate
+
+  ##UCD TA
+- class: Global English and Communication
+  aka: Intro-level sociolinguistics class
+  role: teaching assistant
+  term: Spring 2013
+  university: "University of California, Davis"
+  department: [Linguistics, Communication]
+  coursenum: [LIN 5, CMN 5]
+  level: undergraduate
+
+- class: Global English and Communication
+  aka: Intro-level sociolinguistics class
+  role: teaching assistant
+  term: Fall 2013
+  university: "University of California, Davis"
+  department: [Linguistics, Communication]
+  coursenum: [LIN 5, CMN 5]
+  level: undergraduate
+
+- class: Introduction to Linguistics
+  role: teaching assistant
+  term: Spring 2012
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 1
+  level: undergraduate
+
+- class: Introduction to Linguistics
+  role: teaching assistant
+  term: Spring 2015
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 1
+  level: undergraduate
+
+- class: Introduction to Linguistics
+  role: teaching assistant
+  term: Fall 2015
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 1
+  level: undergraduate
+
+- class: Introduction to Linguistics
+  role: teaching assistant
+  term: Winter 2016
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 1
+  level: undergraduate
+  modality: hybrid
+
+- class: Language and Society
+  aka: Intro-level sociolinguistics class
+  role: teaching assistant
+  term: Fall 2011
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 6
+  level: undergraduate
+
+- class: Language and Society
+  aka: Intro-level sociolinguistics class
+  role: teaching assistant
+  term: Winter 2012
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 6
+  level: undergraduate
+
+- class: Language and Society
+  aka: Intro-level sociolinguistics class
+  role: teaching assistant
+  term: Winter 2013
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 6
+  level: undergraduate
+
+- class: Language and Society
+  aka: Intro-level sociolinguistics class
+  role: teaching assistant
+  term: Winter 2014
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 6
+  level: undergraduate
+
+- class: American Voices
+  aka: Upper-level dialectology class
+  role: teaching assistant
+  term: Fall 2012
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 160
+  level: undergraduate
+
+- class: American Voices
+  aka: Upper-level dialectology class
+  role: teaching assistant
+  term: Spring 2014
+  university: "University of California, Davis"
+  department: Linguistics
+  coursenum: LIN 160
+  level: undergraduate
