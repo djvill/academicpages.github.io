@@ -1,0 +1,10 @@
+{% assign tab_id = tab.url | remove: tablist_name | remove: "/" | downcase %}
+
+<div id="tablist-{{ tablist_name }}-{{ tab_id }}"
+  class="tablist-{{ tablist_name }}-id-content tablist-content"
+  markdown="1"
+  style="display:{{ display }}">
+
+{{ tab }}
+
+</div>

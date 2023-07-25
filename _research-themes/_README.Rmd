@@ -1,6 +1,7 @@
 ---
 title: Research themes README
 output: html_document
+output_file: README.html
 ---
 
 Here's how I generated the `.md` templates in this directory.

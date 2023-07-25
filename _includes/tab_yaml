@@ -1,0 +1,24 @@
+{% assign tab_id = tab.title | replace: " ", "_" | downcase %}
+<div id="{{ tablist_tag }}-{{ tab_id }}"
+  class="{{ tablist_tag }}-id-content tablist-content"
+  markdown="1"
+  style="display:{{ display }}">
+
+{% if tab.content_md %}
+  {% include_relative {{ tab.content_md }} %}
+{% endif %}
+
+{% if tab.code_content %}
+```{% if tab.language %}{{ tab.language }}{% endif %}
+{{ tab.code_content }}```
+{% endif %}
+
+{% if tab.text_content %}
+  {{ tab.text_content }}
+{% endif %}
+
+{% if tab.nested_tablist %}
+  {% include tablist id=tab.nested_tablist %}
+{% endif %}
+
+</div>
