@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -9,51 +9,76 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+## Education
 
-Work experience
-======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+<table id="educ-degrees">
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+{% assign degrees = site.data.cv.education | where_exp: "item", "item.degree" %}
+{% assign experiences = site.data.cv.education | where_exp: "item", "item.experience" %}
 
-Publications
-======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+{% for item in degrees %}
+<tr>
+<td>{{ item.date | date: "%Y" }}</td>
+<td>
+
+<p><b>{{ item.degree }} in {{ item.concentration | join: " & " | capitalize_all }}</b></p>
+
+<p>{{ item.university }} ({{ item.location | state_abbr }})</p>
+
+<p>{{ item.thesis.type | capitalize_all }}: <em>{{ item.thesis.title }}</em> 
+{%- if item.thesis.award -%}
+&nbsp;[{{ item.thesis.award | capitalize_all }}]
+{%- endif -%}</p>
+
+<p>{% if item.committee.members %}
+Committee: {{ item.committee.advisor }} (advisor), {{ item.committee.members | join: ", " }}
+	{% else %}
+Thesis advisor: {{ item.committee.advisor }}
+{% endif %}</p>
+
+{%- if item.awards -%}
+<p>{{ item.awards | join: ", " | markdownify }}</p>
+{%- endif -%}
+</td>
+</tr>
+{% endfor %}
+</table>
+
+{% capture exp %}
+{%- for item in experiences -%}
+{{ item.location | state_abbr }} ({{ item.date }}){% unless forloop.last %}; {% endunless %}
+{%- endfor -%}
+{% endcapture %}
+
+{{ experiences[0].experience }}: {{ exp }}
+
+
+## Academic positions
+
+
+## Research
+
+
+## Honors and awards
+
+
+## Teaching
+
+
+## Graduate mentorship
+
+
+## Professional service
+
+
+## Press
+
+
+## Skills
+
+
+## Professional society memberships
+
+
+## References
+

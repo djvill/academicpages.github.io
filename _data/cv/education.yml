@@ -23,7 +23,7 @@
     members: [Vaidehi Ramanathan, Cecilia Colombi]
 
 - degree: B.A.
-  university: "The College of William & Mary"
+  university: The College of William and Mary
   location: "Williamsburg, Virginia"
   date: May 2010 
   concentration: [linguistics, mathematics]
@@ -33,17 +33,14 @@
     award: highest honors
   committee:
     advisor: Anne Charity Hudley
-    members: [Vaidehi Ramanathan, Cecilia Colombi]
-  awards: [_summa cum laude_, Phi Beta Kappa]
+  awards: [_Summa cum laude_, Phi Beta Kappa]
 
-- experience:
-  name: Linguistic Society of America Linguistic Institute
+- experience: Linguistic Society of America Linguistic Institute
   university: "University of California, Berkeley"
   location: "Berkeley, California"
   date: 2009
 
-- experience:
-  name: Linguistic Society of America Linguistic Institute
+- experience: Linguistic Society of America Linguistic Institute
   university: "University of Colorado, Boulder"
   location: "Boulder, Colorado"
   date: 2011
