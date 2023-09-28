@@ -20,7 +20,8 @@ My-Pubs.bib) and outputs several files for different purposes:
   citations & links for the website (CV, “Research themes” page, etc.).
   This will take the place of `publications.tsv` in the
   publication-data-processing workflow
-- **All-Pubs.csv**: A fallback csv file with the info in All-Pubs.Rds
+- \*\*../\_data/all-pubs.csv\*\*: A fallback csv file with the info in
+  All-Pubs.Rds
 - **All-Pubs.bib**: A bibfile that contains the info that will be turned
   into formatted citations, but doesn’t have the info from the “extra”
   field in My-Pubs.bib
@@ -186,7 +187,8 @@ pubs <- pubs %>%
                                  unique() %>% 
                                  str_subset("^\\d{4}$") %>% 
                                  sort() %>% 
-                                 c(qualDates))))
+                                 c(qualDates)))) %>%
+  arrange(YEAR)
 ```
 
 # Write Rds & csv files
@@ -203,7 +205,8 @@ separated by `|`:
 ``` r
 pubs %>% 
   mutate(across(!where(is.atomic), ~ map_chr(.x, paste, collapse="|"))) %>% 
-  write.csv(file.path(params$outfolder, params$outcsv), row.names=FALSE, na="")
+  write.csv(file.path(params$outfolder, params$outcsv), row.names=FALSE, na="",
+            fileEncoding="UTF-8")
 ```
 
 # Write BibTeX files

@@ -619,7 +619,7 @@ My-Pubs.bib) and outputs several files for different purposes:</p>
 organize citations &amp; links for the website (CV, “Research themes”
 page, etc.). This will take the place of <code>publications.tsv</code>
 in the publication-data-processing workflow</li>
-<li><strong>All-Pubs.csv</strong>: A fallback csv file with the info in
+<li>**../_data/all-pubs.csv**: A fallback csv file with the info in
 All-Pubs.Rds</li>
 <li><strong>All-Pubs.bib</strong>: A bibfile that contains the info that
 will be turned into formatted citations, but doesn’t have the info from
@@ -753,7 +753,8 @@ and <code>YEAR</code> (to accommodate qualitative date codes)</p>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">str_subset</span>(<span class="st">&quot;^</span><span class="sc">\\</span><span class="st">d{4}$&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">sort</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">c</span>(qualDates))))</span></code></pre></div>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">c</span>(qualDates)))) <span class="sc">%&gt;%</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(YEAR)</span></code></pre></div>
 <h1 id="write-rds--csv-files">Write Rds &amp; csv files</h1>
 <p>Write Rds file</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(pubs, <span class="fu">file.path</span>(params<span class="sc">$</span>outfolder, params<span class="sc">$</span>outrds))</span></code></pre></div>
@@ -761,7 +762,8 @@ and <code>YEAR</code> (to accommodate qualitative date codes)</p>
 separated by <code>|</code>:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pubs <span class="sc">%&gt;%</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">!</span><span class="fu">where</span>(is.atomic), <span class="sc">~</span> <span class="fu">map_chr</span>(.x, paste, <span class="at">collapse=</span><span class="st">&quot;|&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.csv</span>(<span class="fu">file.path</span>(params<span class="sc">$</span>outfolder, params<span class="sc">$</span>outcsv), <span class="at">row.names=</span><span class="cn">FALSE</span>, <span class="at">na=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.csv</span>(<span class="fu">file.path</span>(params<span class="sc">$</span>outfolder, params<span class="sc">$</span>outcsv), <span class="at">row.names=</span><span class="cn">FALSE</span>, <span class="at">na=</span><span class="st">&quot;&quot;</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">fileEncoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span></code></pre></div>
 <h1 id="write-bibtex-files">Write BibTeX files</h1>
 <p>Override <code>bib2df::df2bib()</code> to use UTF-8 encoding (via
 <code>xfun::write_utf8()</code>)</p>

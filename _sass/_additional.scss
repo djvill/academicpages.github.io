@@ -28,8 +28,35 @@
   /* ...but not for social-icons */
   .social-icons & {
     &:after {
-	  content: '';
-	}
+			content: '';
+		}
   }
 }
 
+/* Animate citations */
+a.citation {
+  background-color: transparent;
+  transition: background-color 0.2s linear;
+	
+	&:hover {
+		background-color: lightpink;
+	}
+}
+
+
+/* CV tables */
+.cv-table {
+	border: none;
+	font-size: 1em;
+	margin-bottom: 0;
+	
+	td {
+		border: none;
+		vertical-align: top;
+		padding-left: 0;
+	}
+	
+	p {
+		margin: 0;
+	}
+}

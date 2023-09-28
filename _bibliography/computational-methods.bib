@@ -17,6 +17,16 @@ This research demonstrates that the social meanings of linguistic forms do not r
 }
 
 
+@Misc{villarreal_vowel_2016,
+  AUTHOR = {Villarreal, Dan},
+  TITLE = {Vowel manipulation toolkit},
+  YEAR = {2016},
+  ABSTRACT = {This folder contains files useful for replicating the vowel manipulation methods used in my 2016 dissertation.},
+  URL = {https://github.com/djvill/Vowel-Manipulation},
+  HEADING = {Open research tools}
+}
+
+
 @Article{villarreal_construction_2018,
   AUTHOR = {Villarreal, Dan},
   JOURNAL = {Journal of English Linguistics},
@@ -29,13 +39,15 @@ This research demonstrates that the social meanings of linguistic forms do not r
   FILE = {/pubs/Villarreal - 2018 - The construction of social meaning A matched-guis.pdf},
   DOI = {10.1177/0075424217753520},
   KEYWORDS = {sociolinguistics,American dialects,language attitudes,perceptual dialectology,phonetics},
-  HEADING = {Peer-reviewed publications}
+  HEADING = {Peer-reviewed publications},
+  REPO = {@villarreal\_vowel\_2016}
 }
 
 
 @Inproceedings{villarreal_modelling_2019,
   ADDRESS = {Melbourne},
   AUTHOR = {Villarreal, Dan and Clark, Lynn and Hay, Jennifer},
+  BOOKTITLE = {Proceedings of {ICPhS} 19},
   EDITOR = {Calhoun, Sasha and Escudero, Paola and Tabain, Marija and Warren, Paul},
   PAGES = {1893--1897},
   TITLE = {Modelling gradience in {English} /r/ via statistical classification},
@@ -44,6 +56,7 @@ This research demonstrates that the social meanings of linguistic forms do not r
 
 Eleven phonetically trained listeners judged 60 classifier-coded tokens as Present or Absent. Judgment results indicated a significant positive linear relationship between classifier probability and human judgments; classifier probability also outperformed individual acoustic measures (e.g., F3 minimum) in predicting human judgments. These results both validate this random forest classifier method for automated coding of sociophonetic variables and indicate the viability of modelling phonetic variation using classifier probability},
   FILE = {/pubs/Villarreal et al. - 2019 - Modelling gradience in English r via statistical.pdf},
+  URL = {https://assta.org/proceedings/ICPhS2019/papers/ICPhS_1942.pdf},
   HEADING = {Publications in conference proceedings}
 }
 
@@ -59,7 +72,7 @@ Eleven phonetically trained listeners judged 60 classifier-coded tokens as Prese
 
 
 @Article{holliday_intonational_2020,
-  AUTHOR = {Holliday, Nicole and Villarreal, Dan},
+  AUTHOR = {Holliday, Nicole R. and Villarreal, Dan},
   JOURNAL = {Laboratory Phonology},
   NUMBER = {1},
   PAGES = {1--21},
@@ -104,19 +117,6 @@ Eleven phonetically trained listeners judged 60 classifier-coded tokens as Prese
 }
 
 
-@Article{villarreal_sociolinguistic_forthcoming,
-  AUTHOR = {Villarreal, Dan},
-  JOURNAL = {Linguistics Vanguard},
-  TITLE = {Sociolinguistic auto-coding has fairness problems too: {Measuring} and mitigating bias.},
-  YEAR = {forthcoming},
-  ABSTRACT = {Sociolinguistics researchers can use sociolinguistic auto-coding (SLAC) to predict humans’ hand-codes of sociolinguistic data. While auto-coding promises opportunities for greater efficiency, like other computational methods there are inherent concerns about this method’s fairness—whether it generates equally valid predictions for different speaker groups. This would be problematic for sociolinguistic work given the central importance of correlating speaker groups to differences in variable usage. The current study examines SLAC fairness through the lens of gender fairness in auto-coding Southland New Zealand English non-prevocalic /r/. First, given that there are multiple, mutually incompatible definitions of machine learning fairness, I argue that fairness for SLAC is best captured by two fairness definitions (overall accuracy equality and class accuracy equality) corresponding to three fairness metrics. Second, I empirically assess the extent to which SLAC is prone to unfairness. I find that a specific auto-coder described in previous literature performed poorly on all three fairness metrics. Third, to remedy these imbalances, I tested unfairness mitigation strategies on the same data. I find several strategies that reduced unfairness to virtually zero. I close by discussing what SLAC fairness means not just for auto-coding, but more broadly for how we conceptualize variation as an object of study.},
-  FILE = {/pubs/Villarreal - Sociolinguistic auto-coding has fairness problems .pdf},
-  COPYRIGHT = {All rights reserved},
-  HEADING = {Works in progress},
-  REPO = {@villarreal\_slac-fairness\_2023}
-}
-
-
 @Misc{villarreal_slac-fairness_2023,
   AUTHOR = {Villarreal, Dan},
   TITLE = {{SLAC}-{Fairness}: {Tools} to assess fairness and mitigate unfairness in sociolinguistic auto-coding},
@@ -132,23 +132,30 @@ Finally, I invite comments, critiques, and questions about this code. I've made 
 }
 
 
-@Misc{villarreal_vowel_2016,
-  AUTHOR = {Villarreal, Dan},
-  TITLE = {Vowel manipulation toolkit},
-  YEAR = {2016},
-  ABSTRACT = {This folder contains files useful for replicating the vowel manipulation methods used in my 2016 dissertation.},
-  URL = {https://github.com/djvill/Vowel-Manipulation},
-  HEADING = {Open research tools}
-}
-
-
 @Inproceedings{villarreal_modeling_2023,
   ADDRESS = {Prague},
   AUTHOR = {Villarreal, Dan and Grama, James},
+  BOOKTITLE = {Proceedings of {ICPhS} 20},
+  EDITOR = {Skarnitzl, Radek and Volín, Jan},
+  PAGES = {3720--3724},
   TITLE = {Modeling social meanings of phonetic variation amid variable co-occurrence: {A} machine-learning approach},
   YEAR = {2023},
   ABSTRACT = {The social meaning of phonetic variation is central to sociophonetics. Despite the co-occurrence of multiple potentially meaningful variables in speech, previous experimental approaches generally focus on single features. This analysis investigated whether machine-learning methods can uncover vowel features that impact sociolinguistic perceptions. Ninety-seven listeners rated short, spontaneous California English stimuli on 12 affective scales; /æ/ and /u/ tokens were manipulated to create “California-shifted” and “unshifted” guises, with other vowels left to vary naturally. Mirroring “bag-of-words” approaches to text corpora, we treated stimuli as “bags of features” based on 11 vowel phonemes. We used the Boruta feature-selection algorithm to assess the importance of these features, plus guise, on affective scale ratings. The most frequently selected variables included both predictable (/æ/) and less well-attested variables (/ʊ/). However, guise was never selected, suggesting it was an overly-coarse axis of relevant variation. We argue that “bottom-up” approaches can model social meanings amid variable co-occurrence.},
   FILE = {/pubs/Villarreal and Grama - 2023 - Modeling social meanings of phonetic variation ami.pdf},
+  URL = {https://guarant.cz/icphs2023/945.pdf},
   HEADING = {Publications in conference proceedings}
+}
+
+
+@Article{villarreal_sociolinguistic_forthcoming,
+  AUTHOR = {Villarreal, Dan},
+  JOURNAL = {Linguistics Vanguard},
+  TITLE = {Sociolinguistic auto-coding has fairness problems too: {Measuring} and mitigating bias.},
+  YEAR = {forthcoming},
+  ABSTRACT = {Sociolinguistics researchers can use sociolinguistic auto-coding (SLAC) to predict humans’ hand-codes of sociolinguistic data. While auto-coding promises opportunities for greater efficiency, like other computational methods there are inherent concerns about this method’s fairness—whether it generates equally valid predictions for different speaker groups. This would be problematic for sociolinguistic work given the central importance of correlating speaker groups to differences in variable usage. The current study examines SLAC fairness through the lens of gender fairness in auto-coding Southland New Zealand English non-prevocalic /r/. First, given that there are multiple, mutually incompatible definitions of machine learning fairness, I argue that fairness for SLAC is best captured by two fairness definitions (overall accuracy equality and class accuracy equality) corresponding to three fairness metrics. Second, I empirically assess the extent to which SLAC is prone to unfairness. I find that a specific auto-coder described in previous literature performed poorly on all three fairness metrics. Third, to remedy these imbalances, I tested unfairness mitigation strategies on the same data. I find several strategies that reduced unfairness to virtually zero. I close by discussing what SLAC fairness means not just for auto-coding, but more broadly for how we conceptualize variation as an object of study.},
+  FILE = {/pubs/Villarreal - Sociolinguistic auto-coding has fairness problems .pdf},
+  COPYRIGHT = {All rights reserved},
+  HEADING = {Works in progress},
+  REPO = {@villarreal\_slac-fairness\_2023}
 }
 

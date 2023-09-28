@@ -1,0 +1,35 @@
+
+<table class="cv-table cite-table">
+{% for item in include.publications %}
+
+{% capture citation %}
+{% reference {{ item.BIBTEXKEY }} %}
+{% endcapture %}
+{% assign citation = citation | remove: "(missing reference)" %}
+{% assign citation = citation | replace: "Villarreal, Dan", "<b>Villarreal, Dan</b>" | replace: "Dan Villarreal", "<b>Dan Villarreal</b>" %}
+
+{% capture postcite %}
+{%- if item.URL -%}
+{%- unless item.heading != "Open research tools" and item.DOI -%}
+{% comment %} This outputs un-linked URLs. Create a "urlify" filter (with "target blank" option) {% endcomment %}
+{% comment %} This outputs NA for "closing the comm gap" and works in progress {% endcomment %}
+{{ item.URL | split: "|" | join: ", " }}&#32;
+{%- endunless -%}
+{%- endif -%}
+{%- if item.DOI -%}
+[<a href="https://doi.org/{{ item.DOI }}" target="_blank">doi</a>]&#32;
+{%- endif -%}
+{%- if item.FILE -%}[<a href="{{ item.FILE }}" target="_blank">pdf</a>]&#32; {%- endif -%}
+{%- if item.repo -%}[<a href="{{ item.repo | remove: "\" | replace: "@", "#" }}" target="_blank">github</a>]&#32; {%- endif -%}
+{%- if item.data -%}[<a href="{{ item.data }}" target="_blank">data</a>]&#32; {%- endif -%}
+{%- if item.ABSTRACT -%}[<details style="display:initial;"><summary style="cursor:pointer; list-style:none;transition: margin 150ms ease-out;"><a>abstract</a></summary>{{ item.ABSTRACT | remove: "\" }}</details>]&#32; {%- endif -%}
+{% endcapture %}
+
+<tr>
+<td>{{ item.YEAR }}</td>
+<td>
+{{ citation }} {{ postcite }}
+</td>
+</tr>
+{% endfor %}
+</table>

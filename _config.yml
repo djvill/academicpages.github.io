@@ -154,6 +154,7 @@ collections:
     permalink: /:collection/:path/
   research-themes:
     output: true
+    sort_by: sort_order
 
 # Defaults
 defaults:

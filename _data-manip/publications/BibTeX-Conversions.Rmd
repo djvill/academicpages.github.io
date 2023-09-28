@@ -12,7 +12,7 @@ params:
   outfolder: ../../_bibliography
   outbib: All-Pubs.bib
   outrds: All-Pubs.Rds
-  outcsv: All-Pubs.csv
+  outcsv: ../_data/all-pubs.csv
   nicebib: ../../pubs/Villarreal-Pubs.bib
 ---
 
@@ -203,7 +203,8 @@ pubs <- pubs %>%
                                  unique() %>% 
                                  str_subset("^\\d{4}$") %>% 
                                  sort() %>% 
-                                 c(qualDates))))
+                                 c(qualDates)))) %>%
+  arrange(YEAR)
 ```
 
 
@@ -222,7 +223,8 @@ For csv file, collapse list-cols into character vectors, with entries separated 
 ```{r}
 pubs %>% 
   mutate(across(!where(is.atomic), ~ map_chr(.x, paste, collapse="|"))) %>% 
-  write.csv(file.path(params$outfolder, params$outcsv), row.names=FALSE, na="")
+  write.csv(file.path(params$outfolder, params$outcsv), row.names=FALSE, na="",
+            fileEncoding="UTF-8")
 ```
 
 
