@@ -9,6 +9,11 @@ scholar:
   style: _bibliography/Unified-Stylesheet_DV-noyear.csl
 ---
 
+<!-- Page-wide TODO -->
+<!--
+- "Sticky" headings (remain at top desipite scroll), up to heading 2
+-->
+
 {% include base_path %}
 
 <details open markdown="block">
@@ -18,6 +23,8 @@ scholar:
 1. TOC
 {:toc}
 </details>
+
+<!-- TODO: Only down to heading level 2 -->
 
 ## Education
 
@@ -81,6 +88,16 @@ Thesis advisor: {{ item.committee.advisor }}
 
 ## Research
 
+<!-- TODO -->
+<!-- 
+- Standardize year column widths across sections (probably just CSS on .cv-table.cite-table)
+- Remove repeated years
+- Remove NA from cites (Open Methods, works in progress, comm gap)
+- Add tooltips to author asterisks
+- Add tooltips for authnotes
+- Make literal URLs links
+-->
+
 ### Works in progress
 
 {% assign pubs = site.data.all-pubs | where: "heading", "Works in progress" %}
@@ -118,6 +135,35 @@ Thesis advisor: {{ item.committee.advisor }}
 
 
 ## Honors and awards
+
+<!-- TODO -->
+<!--
+- Add commas to dollar amounts above $999
+-->
+
+{% assign honors_pitt = site.data.cv.honors-awards | where: "location", "University of Pittsburgh" %}
+{% assign honors_ucd = site.data.cv.honors-awards | where: "location", "University of California, Davis" %}
+
+#### University of Pittsburgh
+
+{% for honor in honors_pitt %}
+- **{{ honor.honor }}:** {{ honor.description }}
+{%- if honor.exclusivity -%}&#32;[{{ honor.exclusivity }}]{%- endif -%}
+. {{ honor.startdate }}--{{ honor.enddate }}.
+{%- if honor.amount -%}&#32;${{ honor.amount | remove: "$" }}.{%- endif -%}
+{% endfor %}
+
+#### University of California, Davis (graduate school)
+
+{% for honor in honors_ucd %}
+- **{{ honor.honor }}:** {{ honor.description }}
+{%- if honor.exclusivity -%}&#32;[{{ honor.exclusivity }}]{%- endif -%}
+.&#32;
+{%- if honor.startdate and honor.enddate -%} {{ honor.startdate }}--{{ honor.enddate }}.
+{%- else if honor.date -%} {{ honor.date }}.
+{%- endif -%}
+{%- if honor.amount -%}&#32;${{ honor.amount | remove: "$" }}.{%- endif -%}
+{% endfor %}
 
 
 ## Teaching
