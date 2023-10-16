@@ -7,6 +7,88 @@
 # (Others self-explanatory)
 
 ##Pitt
+- class: Aspects of Sociolinguistics
+  term: Fall 2023
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1267
+  level: undergraduate
+
+- class: Linguistic Variation and Change
+  term: Fall 2023
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1269
+  level: undergraduate
+
+- class: Data Science for Research in Linguistics
+  oldname: Data Science for Linguists
+  term: Fall 2022
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 2020
+  oldnum: LING 2340
+  level: graduate
+  url: https://djvill.github.io/Data-Sci-2022/
+
+- class: Linguistic Variation and Change
+  term: Fall 2022
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1269
+  level: undergraduate
+
+- class: Statistics for Research in Linguistics
+  term: Spring 2022
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: [LING 1810, LING 2010]
+  level: [undergraduate, graduate]
+  modality: hybrid
+
+- class: Aspects of Sociolinguistics
+  term: Spring 2022
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1267
+  level: undergraduate
+  modality: hybrid
+
+- class: Linguistic Variation and Change
+  term: Fall 2021
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1269
+  level: undergraduate
+  modality: hybrid
+
+- class: Data Science for Research in Linguistics
+  oldname: Data Science for Linguists
+  term: Fall 2021
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 2020
+  oldnum: LING 2340
+  level: graduate
+  modality: hybrid
+  url: https://djvill.github.io/Data-Sci-2021/
+
+- class: Statistics for Research in Linguistics
+  term: Spring 2021
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: [LING 1810, LING 2010]
+  level: [undergraduate, graduate]
+  modality: remote
+
+- class: Aspects of Sociolinguistics
+  term: Spring 2021
+  university: University of Pittsburgh
+  department: Linguistics
+  coursenum: LING 1267
+  level: undergraduate
+  modality: remote
+
 - class: Linguistic Variation and Change
   term: Fall 2020
   university: University of Pittsburgh
@@ -15,71 +97,6 @@
   level: undergraduate
   modality: remote
 
-- class: Linguistic Variation and Change
-  term: Fall 2021
-  university: University of Pittsburgh
-  department: Linguistics
-  coursenum: LING 1269
-  level: undergraduate
-  modality: hybrid
-
-- class: Linguistic Variation and Change
-  term: Fall 2022
-  university: University of Pittsburgh
-  department: Linguistics
-  coursenum: LING 1269
-  level: undergraduate
-
-- class: Statistics for Research in Linguistics
-  term: Spring 2021
-  university: University of Pittsburgh
-  department: Linguistics
-  coursenum: [LING 1810, LING 2010]
-  level: [undergraduate, graduate]
-  modality: remote
-
-- class: Statistics for Research in Linguistics
-  term: Spring 2022
-  university: University of Pittsburgh
-  department: Linguistics
-  coursenum: [LING 1810, LING 2010]
-  level: [undergraduate, graduate]
-  modality: hybrid
-
-- class: Aspects of Sociolinguistics
-  term: Spring 2021
-  university: University of Pittsburgh
-  department: Linguistics
-  coursenum: LING 1267
-  level: undergraduate
-  modality: remote
-
-- class: Aspects of Sociolinguistics
-  term: Spring 2022
-  university: University of Pittsburgh
-  department: Linguistics
-  coursenum: LING 1267
-  level: undergraduate
-  modality: hybrid
-
-- class: Data Science for Research in Linguistics
-  oldname: Data Science for Linguists
-  term: Fall 2021
-  university: University of Pittsburgh
-  department: Linguistics
-  coursenum: LING 2020
-  oldnum: LING 2340
-  level: graduate
-  modality: hybrid
-
-- class: Data Science for Research in Linguistics
-  oldname: Data Science for Linguists
-  term: Fall 2022
-  university: University of Pittsburgh
-  department: Linguistics
-  coursenum: LING 2020
-  oldnum: LING 2340
-  level: graduate
 
 ##UNR
 - class: Principles of Modern Grammar

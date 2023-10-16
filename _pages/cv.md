@@ -160,13 +160,48 @@ Thesis advisor: {{ item.committee.advisor }}
 {%- if honor.exclusivity -%}&#32;[{{ honor.exclusivity }}]{%- endif -%}
 .&#32;
 {%- if honor.startdate and honor.enddate -%} {{ honor.startdate }}--{{ honor.enddate }}.
-{%- else if honor.date -%} {{ honor.date }}.
+{%- elsif honor.date -%} {{ honor.date }}.
 {%- endif -%}
 {%- if honor.amount -%}&#32;${{ honor.amount | remove: "$" }}.{%- endif -%}
 {% endfor %}
 
 
 ## Teaching
+
+### Teaching experience
+
+
+#### University of Pittsburgh
+
+Graduate courses in **bold**; combined undergraduate/graduate courses in _italics_.
+
+{% assign teaching_pitt = site.data.cv.teaching | where: "university", "University of Pittsburgh" %}
+{% include cv-teaching-section.liquid classes=teaching_pitt rev=true %}
+
+
+#### Prior to University of Pittsburgh (primary instructor unless otherwise noted)
+
+{% assign teaching_unr = site.data.cv.teaching | where: "university", "University of Nevada, Reno" %}
+{% assign teaching_ucd = site.data.cv.teaching | where: "university", "University of California, Davis" | where: "role", nil %}
+{% assign teaching_dtcc = site.data.cv.teaching | where: "university", "Delaware Technical and Community College" %}
+{% assign teaching_ucd_ta = site.data.cv.teaching | where: "university", "University of California, Davis" | where: "role", "teaching assistant" %}
+
+
+##### University of Nevada, Reno
+
+{% include cv-teaching-section.liquid classes=teaching_unr %}
+
+##### University of California, Davis
+
+{% include cv-teaching-section.liquid classes=teaching_ucd %}
+
+##### Delaware Technical and Community College
+
+{% include cv-teaching-section.liquid classes=teaching_dtcc %}
+
+##### University of California, Davis (teaching assistant)
+
+{% include cv-teaching-section.liquid classes=teaching_ucd_ta %}
 
 
 ## Graduate mentorship

@@ -1,0 +1,29 @@
+{% assign class_array = include.classes | group_by: "class" %}
+
+{% for class in class_array %}
+{%- capture class_name -%}
+{%- if class.items[0].level == "undergraduate" -%}
+{{ class.name }}
+{%- elsif class.items[0].level == "graduate" -%}
+**{{ class.name }}**
+{%- else -%}
+_{{ class.name }}_
+{%- endif -%}
+{%- endcapture -%}
+{%- capture class_terms -%}
+{%- if include.rev -%}
+{%- assign class_items = class.items | reverse -%}
+{%- else -%}
+{%- assign class_items = class.items -%}
+{%- endif -%}
+{%- for item in class_items -%}
+{%- if item.url -%}
+[{{ item.term }}]({{ item.url}}){: target="_blank"}
+{%- else -%}
+{{ item.term }}
+{%- endif -%}
+{%- unless forloop.last -%},&#32;{%- endunless -%}
+{%- endfor -%}
+{%- endcapture -%}
+- {{ class_name }} ({{ class_terms }})
+{% endfor %}

@@ -60,3 +60,32 @@ a.citation {
 		margin: 0;
 	}
 }
+
+/* Headings */
+h1, h2, h3 {
+	font-family: $serif;
+}
+h2, h3 {
+	margin-top: 1em;
+}
+h1 {
+	font-size: $type-size-2;
+}
+h2 {
+	font-size: $type-size-3;
+}
+h3 {
+	font-size: $type-size-4;
+}
+h4, h5 {
+	margin-top: 1em;
+	font-size: $type-size-5;
+}
+h4 {
+	font-style: italic;
+}
+
+
+ul {
+	margin-top: 0px;
+}
