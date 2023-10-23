@@ -98,6 +98,10 @@ Thesis advisor: {{ item.committee.advisor }}
 - Make literal URLs links
 -->
 
+\* = graduate student co-author
+\*\* = undergraduate co-author
+
+
 ### Works in progress
 
 {% assign pubs = site.data.all-pubs | where: "heading", "Works in progress" %}
@@ -132,6 +136,18 @@ Thesis advisor: {{ item.committee.advisor }}
 
 {% assign pubs = site.data.all-pubs | where: "heading", "Book reviews" | reverse %}
 {% include cv-research-section.liquid publications=pubs %}
+
+
+### Invited talks
+
+
+
+### Organized sessions
+
+
+
+### Conference presentations
+
 
 
 ## Honors and awards
@@ -204,10 +220,162 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 {% include cv-teaching-section.liquid classes=teaching_ucd_ta %}
 
 
+### Open teaching tools
+
+{% assign open_teaching = site.data.cv.open-teaching-tools %}
+
+<table id="open-teaching" class="cv-table">
+{% for item in open_teaching %}
+<tr>
+<td>{{ item.date }}</td>
+<td>{{ item.title | markdownify | remove: "<p>" | remove: "</p>" | strip }}.
+{%- if item.url -%}&#32;{{ item.url }}{%- endif -%}
+</td>
+</tr>
+{% endfor %}
+</table>
+
+
+### Guest lectures
+
+{% assign guest_lect = site.data.cv.guest-lectures %}
+
+\* = graduate class
+
+<table id="guest-lect" class="cv-table">
+{% for item in guest_lect reversed %}
+<tr>
+<td>{{ item.date | date: "%Y" }}</td>
+<td>"{{ item.title }}". {{ item.university }}: {{ item.course }}
+{%- if item.level == "graduate" -%}*{%- endif -%}.
+{{ item.date | date: "%B %e" }}.
+</td>
+</tr>
+{% endfor %}
+</table>
+
 ## Graduate mentorship
+
+### Advising
+
+#### University of Pittsburgh
+
+##### PhD
+
+- Jack Rechsteiner, 2023--present.
+
+
+#### University of Canterbury
+
+##### Masters of Linguistics
+
+- Merten Wiltshire (co-advised with Jen Hay), _Experiences and expectations in the perception of speech_. March--September 2019.
+
+
+### Committees
+
+#### University of Pittsburgh
+
+##### PhD dissertation committees
+
+- Joe Patrick, _Constructing Montenegrin identity(ies) through language ideology and semiotic differentiation_. August 2022--present.
+- Angela Krak, _Cross-dialectal phonetic variation and lexical encoding: Evidence from /s/ perception in Seville capital_. April 2022--August 2023.
+
+
+##### PhD comprehensive paper committees
+
+- Joe Patrick, PhD comprehensive paper 2, _Multilingual Wikipedia domains as ground for dialect variation in Serbian and Croatian_. April--June 2022.
+- Dominique Branson, PhD comprehensive paper 2, _'Why isn't our word enough?': Situating raciolinguistics and critical discourse analysis for understanding Black girls' racialization in school_. April--November 2021.
+
+
+### Other
+
+- Alexus Brown, Humanities Engage Curricular Development grant (University of Pittsburgh). Supervised development of new collections-based module in Linguistic Variation and Change course; provided mentorship on teaching skills and techniques. May--November 2021.
 
 
 ## Professional service
+
+### Departmental and university service
+
+{% assign service_dept_uni = site.data.cv.service | where: "category", "departmental and university" %}
+
+#### University of Pittsburgh
+
+{% assign service_pitt = service_dept_uni | where: "university", "University of Pittsburgh" %}
+
+{% for item in service_pitt %}
+- **{{ item.title }}{%- if item.role -%}&#32;[{{ item.role }}]{%- endif -%}:** {{ item.description }}.
+{%- if item.startdate and item.enddate -%}&#32;{{ item.startdate }}--{{ item.enddate }}.
+{%- elsif item.date -%}&#32;{{ item.date }}.
+{%- endif -%}
+{%- if item.url -%}&#32;{{ item.url }}{%- endif -%}
+{% endfor %}
+
+
+#### University of California, Davis
+
+{% assign service_ucd = service_dept_uni | where: "university", "University of California, Davis" %}
+
+{% for item in service_ucd %}
+- **{{ item.title }}{%- if item.role -%}&#32;[{{ item.role }}]{%- endif -%}:** {{ item.description }}.
+{%- if item.startdate and item.enddate -%}&#32;{{ item.startdate }}--{{ item.enddate }}.
+{%- elsif item.date -%}&#32;{{ item.date }}.
+{%- endif -%}
+{%- if item.url -%}&#32;{{ item.url }}{%- endif -%}
+{% endfor %}
+
+
+### Service to the profession
+
+{% assign service_prof = site.data.cv.service | where_exp: "item", "item.category != 'departmental and university'" %}
+
+##### Committee service
+
+{% assign service_cmte = service_prof | where: "category", "committee" %}
+
+{% for item in service_cmte %}
+- {{ item.committee }}{%- if item.organization -%}&#32;({{ item.organization }}){%- endif -%}
+{%- if item.startdate and item.enddate -%}: {{ item.startdate }}--{{ item.enddate }}.
+{%- elsif item.date -%}: {{ item.date }}.
+{%- endif -%}
+{% endfor %}
+
+
+##### Grant review
+
+{% assign service_grant = service_prof | where: "category", "grant review" %}
+
+{% for item in service_grant %}
+- {{ item.agency }}:&#32;{%- if item.dates.first -%}{{ item.dates | join: ", " }}{%- else -%}{{ item.dates }}{%- endif -%}
+{% endfor %}
+
+
+##### Journal review
+
+{% assign service_journal = service_prof | where: "category", "article review" %}
+
+{% for item in service_journal %}
+- _{{ item.journal }}_:&#32;{%- if item.dates.first -%}{{ item.dates | join: ", " }}{%- else -%}{{ item.dates }}{%- endif -%}
+{% endfor %}
+
+
+##### Abstract review
+
+{% assign service_conf = service_prof | where: "category", "abstract review" %}
+
+{% for item in service_conf %}
+- {{ item.conference }}:&#32;{%- if item.dates.first -%}{{ item.dates | join: ", " }}{%- else -%}{{ item.dates }}{%- endif -%}
+{% endfor %}
+
+
+##### External thesis examination
+
+{% assign service_ext_thesis = service_prof | where: "category", "external thesis examination" %}
+
+{% for item in service_ext_thesis %}
+- {{ item.university }} ({{ item.degree }}):&#32;{%- if item.dates.first -%}{{ item.dates | join: ", " }}{%- else -%}{{ item.dates }}{%- endif -%}
+{% endfor %}
+
 
 
 ## Press
