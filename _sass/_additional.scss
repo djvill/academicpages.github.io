@@ -61,8 +61,15 @@ a.citation {
 	}
 }
 
+/* Make room for "in press" etc. */
+.cite-table td:first-child {
+    width: 5em;
+}
+
 /* Headings */
-h1, h2, h3 {
+/* Sticky heading solution courtesy of https://stackoverflow.com/a/55941740 */
+
+h1, h2, h3, h4 {
 	font-family: $serif;
 }
 h2, h3 {
@@ -74,6 +81,7 @@ h1 {
 }
 h2 {
 	font-size: $type-size-3;
+	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
 	background: #ddd;
@@ -82,7 +90,7 @@ h2 {
 h3 {
 	font-size: $type-size-4;
 	position: sticky;
-	top: 1.2em;
+	top: 1.5em;
 	background: #eee;
 	z-index: 2;
 }
@@ -93,8 +101,9 @@ h4, h5 {
 h4 {
 	font-style: italic;
 }
+
 .level2 {
-    padding: 24px 0 0 0;
+  padding: 24px 0 0 0;
 }
 
 ul {

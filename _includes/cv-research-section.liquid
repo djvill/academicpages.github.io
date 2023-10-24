@@ -9,6 +9,7 @@
 {% assign citation = citation | replace: "Villarreal, Dan", "<b>Villarreal, Dan</b>" | replace: "Dan Villarreal", "<b>Dan Villarreal</b>" %}
 
 {% capture postcite %}
+<div class="postcite">
 {%- if item.URL -%}
 {%- unless item.heading != "Open research tools" and item.DOI -%}
 {% comment %} This outputs un-linked URLs. Create a "urlify" filter (with "target blank" option) {% endcomment %}
@@ -22,7 +23,8 @@
 {%- if item.FILE -%}[<a href="{{ item.FILE }}" target="_blank">pdf</a>]&#32; {%- endif -%}
 {%- if item.repo -%}[<a href="{{ item.repo | remove: "\" | replace: "@", "#" }}" target="_blank">github</a>]&#32; {%- endif -%}
 {%- if item.data -%}[<a href="{{ item.data }}" target="_blank">data</a>]&#32; {%- endif -%}
-{%- if item.ABSTRACT -%}[<details style="display:initial;"><summary style="cursor:pointer; list-style:none;transition: margin 150ms ease-out;"><a>abstract</a></summary>{{ item.ABSTRACT | remove: "\" }}</details>]&#32; {%- endif -%}
+{%- if item.ABSTRACT -%}\[<details style="display:initial;"><summary style="cursor:pointer; list-style:none;transition: margin 150ms ease-out;"><a>abstract</a></summary>{{ item.ABSTRACT | remove: "\" }}</details>\]{%- endif -%}
+</div>
 {% endcapture %}
 
 <tr>

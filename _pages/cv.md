@@ -98,7 +98,10 @@ Thesis advisor: {{ item.committee.advisor }}
 - Make literal URLs links
 -->
 
+
+
 \* = graduate student co-author
+
 \*\* = undergraduate co-author
 
 
@@ -274,8 +277,6 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 
 ### Committees
 
-#### University of Pittsburgh
-
 ##### PhD dissertation committees
 
 - Joe Patrick, _Constructing Montenegrin identity(ies) through language ideology and semiotic differentiation_. August 2022--present.
@@ -389,3 +390,10 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 
 ## References
 
+
+
+<script>
+//Fix annoying extra spaces in "[ abstract ]"
+var postCite = document.querySelectorAll(".postcite");
+postCite.forEach(a => a.innerHTML = a.innerHTML.replace(/\[\s+/, '[').replace(/\s+\]/, ']'));
+</script>
