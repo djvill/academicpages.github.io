@@ -119,7 +119,8 @@ encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 # Conversion
-markdown: kramdown
+# markdown: kramdown
+markdown: Pandoc
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
@@ -133,10 +134,13 @@ kramdown:
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
-  toc_levels: 1..6
+  toc_levels: 1..3
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
-
+pandoc:
+  extensions:
+    - section-divs
+  to: html4
 
 # Collections
 collections:

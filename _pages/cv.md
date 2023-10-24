@@ -11,7 +11,7 @@ scholar:
 
 <!-- Page-wide TODO -->
 <!--
-- "Sticky" headings (remain at top desipite scroll), up to heading 2
+- "Sticky" headings (remain at top despite scroll), up to heading 2
 -->
 
 {% include base_path %}
