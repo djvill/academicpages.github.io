@@ -143,15 +143,53 @@ Thesis advisor: {{ item.committee.advisor }}
 
 ### Invited talks
 
+{% assign invited_talks = site.data.cv.invited-talks %}
+
+<table id="invited-talks" class="cv-table cite-table">
+{% for item in invited_talks %}
+<tr>
+<td>{{ item.date | date: "%Y" }}</td>
+<td>{{ item.title }}. {{ item.university }}: {{ item.department }}. {{ item.date | date: "%B %e" }}.</td>
+</tr>
+{% endfor %}
+</table>
 
 
 ### Organized sessions
 
+{% assign org_sessions = site.data.cv.organized-sessions %}
+
+<table id="org-sessions" class="cv-table cite-table">
+{% for item in org_sessions %}
+<tr>
+<td>{{ item.date | date: "%Y" }}</td>
+<td>{% include cv-authorlist.liquid authorlist=item.organizer %}. {{ item.title }} {{ item.location | capitalize }}. {{ item.date | date: "%B %e" }}.</td>
+</tr>
+{% endfor %}
+</table>
 
 
 ### Conference presentations
 
+{% assign conf_presentations = site.data.cv.conference-presentations %}
 
+
+<table id="conf-presentations" class="cv-table cite-table">
+{% for item in conf_presentations %}
+<tr>
+<td>{%- if item.startdate -%} {{ item.startdate | date: "%Y" }}
+{%- else -%} {{ item.date | date: "%Y" }}
+{%- endif -%}</td>
+<td>{% include cv-authorlist.liquid authorlist=item.author %}. {{ item.title }}. {{ item.conference }}, {{ item.location }}.&#32;
+{%- if item.session -%} {{ item.session | capitalize }}.&#32;{%- endif -%}
+{%- if item.startdate and item.enddate -%}
+{{ item.startdate | date: "%B" }} {{ item.startdate | date: "%e" }}--{{ item.enddate | date: "%e" }}
+{%- else -%}
+{{ item.date | date: "%B %e" }}
+{%- endif -%}.</td>
+</tr>
+{% endfor %}
+</table>
 
 ## Honors and awards
 

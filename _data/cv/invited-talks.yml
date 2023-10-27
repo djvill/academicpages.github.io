@@ -1,22 +1,53 @@
-- title: Do I sound like a Valley Girl to you? Perceptual dialectology and language attitudes in California
-  date: February 26, 2014
+- title: "Researcher choice and overlooked variables: A \"bottom-up\" reanalysis of Villarreal (2018)"
+  date: October 6, 2023
   department: Department of Linguistics
-  university: Stanford University
+  university: University of Kentucky
 
-- title: "C[ɑ]lifornia perceivin’: A matched-guise study of the California Vowel Shift"
-  date: September 10, 2015
+- title: "Computational methods + sociolinguistic perspectives: Making the case for computational sociolinguistics"
+  date: January 31, 2023
+  department: Department of Modern Languages
+  university: Carnegie Mellon University
+
+- title: "Open Methods: Decolonizing (or not) research methods in linguistics"
+  date: November 4, 2022
   department: Department of Linguistics
-  university: Fresno State University
+  university: University of Michigan
 
-- title: "The stylistic status of the California Vowel Shift: A production study"
-  date: January 12, 2017
+- title: "Sociolinguistic auto-coding: Applications and pitfalls"
+  date: November 3, 2022
+  department: Department of Linguistics, Languages, and Cultures
+  university: Michigan State University
+
+- title: "Computational methods + sociolinguistic perspectives: Making the case for computational sociolinguistics"
+  date: March 8, 2022
+  department: Department of English
+  university: University of Tennessee
+
+- title: "Overlearning speaker gender in sociolinguistic auto-coding: Metrics and remedies"
+  date: February 4, 2022
+  department: Department of Computer Science
+  university: University of Pittsburgh
+
+- title: "Computational methods + sociolinguistic perspectives: Making the case for computational sociolinguistics"
+  date: February 11, 2020
+  department: Department of Linguistics
+  university: University of Pittsburgh
+  jobtalk: yes
+
+- title: "Phonetic detail and sociolinguistic variation: Three studies of New Zealand English"
+  date: February 13, 2019
   department: Department of Linguistics
   university: University of California, Davis
 
+- title: "Telling a new story with old data: Random-forest classification of non-prevocalic (r) in Southland New Zealand English"
+  date: January 21, 2019
+  department: ARC Centre of Excellence for the Dynamics of Language
+  university: The Australian National University
+
 - title: "The construction of social meaning: A matched-guise investigation of the California Vowel Shift"
-  date: February 7, 2017
-  department: Department of Linguistics and Language Development
-  university: San José State University
+  date: February 11, 2019
+  department: Department of English
+  university: San Francisco State University
   jobtalk: yes
 
 - title: Phonetic gradience in sociolinguistic cognition
@@ -25,54 +56,23 @@
   university: University of Delaware
   jobtalk: yes
 
-- title: "Adventures in building the Southland corpus: Working with old data, creating data layers, transcription quality control"
-  date: September 25, 2018
-  department: New Zealand Institute of Language
-  university: Brain, and Behaviour, University of Canterbury
-
-- title: "Telling a new story with old data: Random-forest classification of non-prevocalic (r) in Southland New Zealand English"
-  date: January 21, 2019
-  department: ARC Centre of Excellence for the Dynamics of Language
-  university: the Australian National University
-
 - title: "The construction of social meaning: A matched-guise investigation of the California Vowel Shift"
-  date: February 11, 2019
-  department: Department of English
-  university: San Francisco State University
+  date: February 7, 2017
+  department: Department of Linguistics and Language Development
+  university: San José State University
   jobtalk: yes
 
-- title: "Phonetic detail and sociolinguistic variation: Three studies of New Zealand English"
-  date: February 13, 2019
+- title: "The stylistic status of the California Vowel Shift: A production study"
+  date: January 12, 2017
   department: Department of Linguistics
-  university: UC Davis
+  university: University of California, Davis
 
-- title: "Computational methods + sociolinguistic perspectives: Making the case for computational sociolinguistics"
-  date: February 11, 2020
+- title: "C[ɑ]lifornia perceivin’: A matched-guise study of the California Vowel Shift"
+  date: September 10, 2015
   department: Department of Linguistics
-  university: University of Pittsburgh
-  jobtalk: yes
+  university: Fresno State University
 
-- title: "Overlearning speaker gender in sociolinguistic auto-coding: Metrics and remedies"
-  date: February 4, 2022
-  department: Department of Computer Science
-  university: University of Pittsburgh
-
-- title: "Computational methods + sociolinguistic perspectives: Making the case for computational sociolinguistics"
-  date: March 8, 2022
-  department: Department of English
-  university: University of Tennessee
-
-- title: "Sociolinguistic auto-coding: Applications and pitfalls"
-  date: November 3, 2022
+- title: Do I sound like a Valley Girl to you? Perceptual dialectology and language attitudes in California
+  date: February 26, 2014
   department: Department of Linguistics
-  university: Languages, and Cultures, Michigan State University
-
-- title: "Open Methods: Decolonizing (or not) research methods in linguistics"
-  date: November 4, 2022
-  department: Department of Linguistics
-  university: University of Michigan
-
-- title: "Computational methods + sociolinguistic perspectives: Making the case for computational sociolinguistics"
-  date: January 31, 2023
-  department: Department of Modern Languages
-  university: Carnegie Mellon University
+  university: Stanford University

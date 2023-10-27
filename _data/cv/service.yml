@@ -1,6 +1,14 @@
 ##Departmental and university service
 
 ##Pitt
+- title: Colloquium committee
+  role: chair
+  description: Organized weekly Colloquium series for the Department of Linguistics
+  category: departmental and university
+  university: University of Pittsburgh
+  startdate: August 2023
+  enddate: present
+
 - title: Standard Research Workstation pilot
   description: Participated in pilot program through Pitt Research and Pitt IT to test virtual machines for mid-scale research computing
   category: departmental and university

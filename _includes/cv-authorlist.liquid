@@ -1,0 +1,11 @@
+{%- if include.authorlist.first -%}
+{%- comment -%} If authorlist is an array {%- endcomment -%}
+{%- if include.authorlist.first == "Dan Villarreal" -%}
+{{ include.authorlist | array_to_sentence_string | replace: "Dan Villarreal", "<b>Villarreal, Dan</b>" }}
+{%- else -%}
+{{ include.authorlist | array_to_sentence_string | replace: "Dan Villarreal", "<b>Dan Villarreal</b>" }}
+{%- endif -%}
+{%- else -%}
+{%- comment -%} If authorlist is a string {%- endcomment -%}
+{{ include.authorlist | replace: "Dan Villarreal", "<b>Villarreal, Dan</b>" }}
+{%- endif -%}
