@@ -23,9 +23,6 @@ $(document).ready(function(){
   // FitVids init
   $("#main").fitVids();
 
-  // init sticky sidebar
-  $(".sticky").Stickyfill();
-
   var stickySideBar = function(){
     var show = $(".author__urls-wrapper button").length === 0 ? $(window).width() > 1024 : !$(".author__urls-wrapper button").is(":visible");
     // console.log("has button: " + $(".author__urls-wrapper button").length === 0);

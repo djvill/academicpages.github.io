@@ -11,24 +11,28 @@
 {% capture postcite %}
 <div class="postcite">
 {%- if item.URL -%}
-{%- unless item.heading != "Open research tools" and item.DOI -%}
-{% comment %} This outputs un-linked URLs. Create a "urlify" filter (with "target blank" option) {% endcomment %}
-{% comment %} This outputs NA for "closing the comm gap" and works in progress {% endcomment %}
-{{ item.URL | split: "|" | join: ", " }}&#32;
+{%- unless (item.heading != "Open research tools" and item.DOI) or item.URL == "NA" -%}
+{%- assign urls = item.URL | split: "|" -%}
+{%- for url in urls -%}
+<a href="{{ url }}" target="_blank">{{ url }}</a>{%- unless forloop.last -%},{%- endunless -%}&#32;
+{%- endfor -%}
 {%- endunless -%}
 {%- endif -%}
-{%- if item.DOI -%}
-[<a href="https://doi.org/{{ item.DOI }}" target="_blank">doi</a>]&#32;
+{%- if item.FILE -%}<a href="{{ item.FILE }}" target="_blank"><img src="/images/fa-file-pdf.svg" title="View full-text PDF" alt="pdf" /></a>&#32; {%- endif -%}
+{%- if item.DOI -%}<a href="https://doi.org/{{ item.DOI }}" target="_blank">[publisher]</a>&#32;{%- endif -%}
+{%- if item.repo -%}<a href="{{ item.repo | remove: "\" | replace: "@", "#" }}">[github]</a>&#32; {%- endif -%}
+{%- if item.data -%}<a href="{{ item.data }}" target="_blank">[data]</a>&#32; {%- endif -%}
+{%- if item.ABSTRACT -%}
+<a class="abstract-link">[abstract]</a>
+<div class="abstract" style="display: none;">{{ item.ABSTRACT }}</span>
 {%- endif -%}
-{%- if item.FILE -%}[<a href="{{ item.FILE }}" target="_blank">pdf</a>]&#32; {%- endif -%}
-{%- if item.repo -%}[<a href="{{ item.repo | remove: "\" | replace: "@", "#" }}" target="_blank">github</a>]&#32; {%- endif -%}
-{%- if item.data -%}[<a href="{{ item.data }}" target="_blank">data</a>]&#32; {%- endif -%}
-{%- if item.ABSTRACT -%}\[<details style="display:initial;"><summary style="cursor:pointer; list-style:none;transition: margin 150ms ease-out;"><a>abstract</a></summary>{{ item.ABSTRACT | remove: "\" }}</details>\]{%- endif -%}
+
+
 </div>
 {% endcapture %}
 
 <tr>
-<td>{{ item.YEAR }}</td>
+<td>{{ item.YEAR | replace: "forthcoming", "forth-coming" }}</td>
 <td>
 {{ citation }} {{ postcite }}
 </td>

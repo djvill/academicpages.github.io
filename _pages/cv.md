@@ -9,11 +9,6 @@ scholar:
   style: _bibliography/Unified-Stylesheet_DV-noyear.csl
 ---
 
-<!-- Page-wide TODO -->
-<!--
-- "Sticky" headings (remain at top despite scroll), up to heading 2
--->
-
 {% include base_path %}
 
 <details open markdown="block">
@@ -80,7 +75,8 @@ Thesis advisor: {{ item.committee.advisor }}
 <td>{{ item.startdate | date: "%Y" }}&ndash;{% if item.enddate == "present" %}{{ item.enddate }}{% else %}{{ item.enddate | date: "%Y" }}{% endif %}</td>
 <td>
 <p><b>{{ item.title }}</b></p>
-<p>{{ item.department }}; {{ item.university }}</p>
+<p>{{ item.department }}</p>
+<p>{{ item.university }}</p>
 </td>
 </tr>
 {% endfor %}
@@ -90,12 +86,11 @@ Thesis advisor: {{ item.committee.advisor }}
 
 <!-- TODO -->
 <!-- 
-- Standardize year column widths across sections (probably just CSS on .cv-table.cite-table)
 - Remove repeated years
-- Remove NA from cites (Open Methods, works in progress, comm gap)
 - Add tooltips to author asterisks
 - Add tooltips for authnotes
 - Make literal URLs links
+- Fix dangling unicode in abstract (in "Modeling social meanings of phonetic variation amid variable co-occurrence: A machine-learning approach")
 -->
 
 
@@ -123,21 +118,15 @@ Thesis advisor: {{ item.committee.advisor }}
 {% include cv-research-section.liquid publications=pubs %}
 
 
-### Publications in edited volumes
-
-{% assign pubs = site.data.all-pubs | where: "heading", "Publications in edited volumes" | reverse %}
-{% include cv-research-section.liquid publications=pubs %}
-
-
 ### Publications in conference proceedings
 
 {% assign pubs = site.data.all-pubs | where: "heading", "Publications in conference proceedings" | reverse %}
 {% include cv-research-section.liquid publications=pubs %}
 
 
-### Book reviews
+### Publications in edited volumes
 
-{% assign pubs = site.data.all-pubs | where: "heading", "Book reviews" | reverse %}
+{% assign pubs = site.data.all-pubs | where: "heading", "Publications in edited volumes" | reverse %}
 {% include cv-research-section.liquid publications=pubs %}
 
 
@@ -167,6 +156,12 @@ Thesis advisor: {{ item.committee.advisor }}
 </tr>
 {% endfor %}
 </table>
+
+
+### Book reviews
+
+{% assign pubs = site.data.all-pubs | where: "heading", "Book reviews" | reverse %}
+{% include cv-research-section.liquid publications=pubs %}
 
 
 ### Conference presentations
@@ -270,7 +265,7 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 <tr>
 <td>{{ item.date }}</td>
 <td>{{ item.title | markdownify | remove: "<p>" | remove: "</p>" | strip }}.
-{%- if item.url -%}&#32;{{ item.url }}{%- endif -%}
+{%- if item.url -%}<a href="{{ item.url }}" target="_blank">{{ item.url }}</a>{%- endif -%}
 </td>
 </tr>
 {% endfor %}
@@ -347,7 +342,7 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 {%- if item.startdate and item.enddate -%}&#32;{{ item.startdate }}--{{ item.enddate }}.
 {%- elsif item.date -%}&#32;{{ item.date }}.
 {%- endif -%}
-{%- if item.url -%}&#32;{{ item.url }}{%- endif -%}
+{% if item.url %}<a href="{{ item.url }}" target="_blank">{{ item.url }}</a>{% endif %}
 {% endfor %}
 
 
@@ -360,7 +355,7 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 {%- if item.startdate and item.enddate -%}&#32;{{ item.startdate }}--{{ item.enddate }}.
 {%- elsif item.date -%}&#32;{{ item.date }}.
 {%- endif -%}
-{%- if item.url -%}&#32;{{ item.url }}{%- endif -%}
+{% if item.url %}<a href="{{ item.url }}" target="_blank">{{ item.url }}</a>{% endif %}
 {% endfor %}
 
 
@@ -419,6 +414,20 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 
 ## Press
 
+{% assign press = site.data.cv.press %}
+
+<table id="press" class="cv-table">
+{% for item in press reversed %}
+<tr>
+<td>{{ item.date | date: "%Y" }}</td>
+<td>"{{ item.title }}". {{ item.venue }}, {{ item.date | date: "%B %e" }}.
+{% if item.url %}<a href="{{ item.url }}" target="_blank">{{ item.url }}</a>{% endif %}
+{% if item.note %}[N.B. {{ item.note }}]{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>
+
 
 ## Skills
 
@@ -429,9 +438,11 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 ## References
 
 
-
-<script>
-//Fix annoying extra spaces in "[ abstract ]"
-var postCite = document.querySelectorAll(".postcite");
-postCite.forEach(a => a.innerHTML = a.innerHTML.replace(/\[\s+/, '[').replace(/\s+\]/, ']'));
+<script type="module">
+//Make abstract links pop open abstract
+//From https://people.cs.georgetown.edu/nschneid/me.js
+$(".abstract-link").click(function () {
+	$(this).nextAll(".abstract").toggle();
+	$(this).toggleClass("selected");
+})
 </script>
