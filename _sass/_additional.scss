@@ -73,8 +73,8 @@ h1, h2, h3, h4 {
 	font-family: $serif;
 }
 h2, h3 {
-	// margin-top: 1em;
-	margin-top: 0;
+	margin-top: 1em;
+	// margin-top: 0;
 }
 h1 {
 	font-size: $type-size-2;
@@ -131,4 +131,12 @@ div.archive {
 .abstract-link {
 	transition: unset;
 	cursor: pointer;
+}
+
+
+//Tooltips
+.tooltip {
+	color: $link-color;
+	border-bottom: 1px dotted $link-color;
+	cursor: help;
 }

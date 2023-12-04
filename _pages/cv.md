@@ -29,7 +29,7 @@ scholar:
 <table id="educ-degrees" class="cv-table">
 {% for item in degrees %}
 <tr>
-<td>{{ item.date | date: "%Y" }}</td>
+<td style="width:3.5em;">{{ item.date | date: "%Y" }}</td>
 <td>
 
 <p><b>{{ item.degree }} in {{ item.concentration | join: " & " | capitalize_all }}</b></p>
@@ -72,7 +72,7 @@ Thesis advisor: {{ item.committee.advisor }}
 <table id="acad-pos" class="cv-table">
 {% for item in acad_pos %}
 <tr id="acad-pos-{{ item.key }}">
-<td>{{ item.startdate | date: "%Y" }}&ndash;{% if item.enddate == "present" %}{{ item.enddate }}{% else %}{{ item.enddate | date: "%Y" }}{% endif %}</td>
+<td style="width:7em;">{{ item.startdate | date: "%Y" }}&ndash;{% if item.enddate == "present" %}{{ item.enddate }}{% else %}{{ item.enddate | date: "%Y" }}{% endif %}</td>
 <td>
 <p><b>{{ item.title }}</b></p>
 <p>{{ item.department }}</p>
@@ -87,17 +87,9 @@ Thesis advisor: {{ item.committee.advisor }}
 <!-- TODO -->
 <!-- 
 - Remove repeated years
-- Add tooltips to author asterisks
-- Add tooltips for authnotes
-- Make literal URLs links
+	- This is gonna be challenging
 - Fix dangling unicode in abstract (in "Modeling social meanings of phonetic variation amid variable co-occurrence: A machine-learning approach")
 -->
-
-
-
-\* = graduate student co-author
-
-\*\* = undergraduate co-author
 
 
 ### Works in progress
@@ -265,7 +257,7 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 <tr>
 <td>{{ item.date }}</td>
 <td>{{ item.title | markdownify | remove: "<p>" | remove: "</p>" | strip }}.
-{%- if item.url -%}<a href="{{ item.url }}" target="_blank">{{ item.url }}</a>{%- endif -%}
+{%- if item.url -%}&#32;<a href="{{ item.url }}" target="_blank">{{ item.url }}</a>{%- endif -%}
 </td>
 </tr>
 {% endfor %}
@@ -276,14 +268,12 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 
 {% assign guest_lect = site.data.cv.guest-lectures %}
 
-\* = graduate class
-
 <table id="guest-lect" class="cv-table">
 {% for item in guest_lect reversed %}
 <tr>
 <td>{{ item.date | date: "%Y" }}</td>
 <td>"{{ item.title }}". {{ item.university }}: {{ item.course }}
-{%- if item.level == "graduate" -%}*{%- endif -%}.
+{%- if item.level == "graduate" -%}<span class="tooltip" title="graduate-level class">*</span>{%- endif -%}.
 {{ item.date | date: "%B %e" }}.
 </td>
 </tr>
@@ -338,9 +328,9 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 {% assign service_pitt = service_dept_uni | where: "university", "University of Pittsburgh" %}
 
 {% for item in service_pitt %}
-- **{{ item.title }}{%- if item.role -%}&#32;[{{ item.role }}]{%- endif -%}:** {{ item.description }}.
-{%- if item.startdate and item.enddate -%}&#32;{{ item.startdate }}--{{ item.enddate }}.
-{%- elsif item.date -%}&#32;{{ item.date }}.
+- **{{ item.title }}{%- if item.role -%}&#32;[{{ item.role }}]{%- endif -%}:** {{ item.description }}.&#32;
+{%- if item.startdate and item.enddate -%}{{ item.startdate }}--{{ item.enddate }}.&#32;
+{%- elsif item.date -%}{{ item.date }}.&#32;
 {%- endif -%}
 {% if item.url %}<a href="{{ item.url }}" target="_blank">{{ item.url }}</a>{% endif %}
 {% endfor %}
@@ -351,9 +341,9 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 {% assign service_ucd = service_dept_uni | where: "university", "University of California, Davis" %}
 
 {% for item in service_ucd %}
-- **{{ item.title }}{%- if item.role -%}&#32;[{{ item.role }}]{%- endif -%}:** {{ item.description }}.
-{%- if item.startdate and item.enddate -%}&#32;{{ item.startdate }}--{{ item.enddate }}.
-{%- elsif item.date -%}&#32;{{ item.date }}.
+- **{{ item.title }}{%- if item.role -%}&#32;[{{ item.role }}]{%- endif -%}:** {{ item.description }}.&#32;
+{%- if item.startdate and item.enddate -%}{{ item.startdate }}--{{ item.enddate }}.&#32;
+{%- elsif item.date -%}{{ item.date }}.&#32;
 {%- endif -%}
 {% if item.url %}<a href="{{ item.url }}" target="_blank">{{ item.url }}</a>{% endif %}
 {% endfor %}
@@ -431,18 +421,11 @@ Graduate courses in **bold**; combined undergraduate/graduate courses in _italic
 
 ## Skills
 
+- **Computer skills:** R/tidyverse, Praat (advanced); Git (moderate); Python, JavaScript, Bash, Slurm, HTML/CSS (beginner)
+- **Language skills:** Spanish (moderate)
 
 ## Professional society memberships
 
-
-## References
-
-
-<script type="module">
-//Make abstract links pop open abstract
-//From https://people.cs.georgetown.edu/nschneid/me.js
-$(".abstract-link").click(function () {
-	$(this).nextAll(".abstract").toggle();
-	$(this).toggleClass("selected");
-})
-</script>
+- **Linguistic Society of America**, 2010–present (lifetime member as of 2020)
+- **American Dialect Society**, 2012–present
+- **Linguistic Society of New Zealand**, 2017–2019

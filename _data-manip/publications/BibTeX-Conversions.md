@@ -143,13 +143,21 @@ Add asterisks to `AUTHOR` (\* = grad/professional student co-author,
 \*\* = undergrad)
 
 ``` r
-addStar <- function(x, oneStar, twoStar, starAfter=c("last","end")) {
+addStar <- function(x, oneStar, twoStar, prefixZWSP=FALSE, starAfter=c("last","end")) {
   library(dplyr)
   starAfter <- match.arg(starAfter)
-  star <- case_when(str_remove(x, ",.+") %in% oneStar ~ "*",
-                    str_remove(x, ",.+") %in% twoStar ~ "**",
-                    TRUE ~ "")
-  
+    ##Optionally prefix with zero-width space (makes processing easier down the line)
+    if (prefixZWSP) {
+        star <- case_when(str_remove(x, ",.+") %in% oneStar ~ "​*",
+                                            str_remove(x, ",.+") %in% twoStar ~ "​**",
+                                            TRUE ~ "")
+  } else {
+        star <- case_when(str_remove(x, ",.+") %in% oneStar ~ "*",
+                                            str_remove(x, ",.+") %in% twoStar ~ "**",
+                                            TRUE ~ "")
+    }
+    
+    ##Star placement
   if (starAfter=="last") {
     ##Last*, First
     str_replace(x, ",", paste0(star, ","))
@@ -348,16 +356,16 @@ sessionInfo()
 
     other attached packages:
      [1] xfun_0.39       bib2df_1.1.2.0  lubridate_1.9.2 forcats_1.0.0  
-     [5] stringr_1.5.0   dplyr_1.1.2     purrr_1.0.1     readr_2.1.4    
+     [5] stringr_1.5.0   dplyr_1.1.3     purrr_1.0.2     readr_2.1.4    
      [9] tidyr_1.3.0     tibble_3.2.1    ggplot2_3.4.2   tidyverse_2.0.0
 
     loaded via a namespace (and not attached):
      [1] gtable_0.3.3       compiler_4.3.1     Rcpp_1.0.10        tidyselect_1.2.0  
      [5] scales_1.2.1       yaml_2.3.7         fastmap_1.1.1      R6_2.5.1          
      [9] generics_0.1.3     knitr_1.43         munsell_0.5.0      pillar_1.9.0      
-    [13] tzdb_0.4.0         rlang_1.1.1        utf8_1.2.3         stringi_1.7.12    
-    [17] timechange_0.2.0   cli_3.6.1          withr_2.5.0        magrittr_2.0.3    
+    [13] tzdb_0.4.0         rlang_1.1.1        utf8_1.2.4         stringi_1.7.12    
+    [17] timechange_0.2.0   cli_3.6.1          withr_2.5.2        magrittr_2.0.3    
     [21] digest_0.6.31      grid_4.3.1         hms_1.1.3          lifecycle_1.0.3   
-    [25] vctrs_0.6.3        humaniformat_0.6.0 evaluate_0.21      glue_1.6.2        
-    [29] fansi_1.0.4        colorspace_2.1-0   httr_1.4.6         rmarkdown_2.22    
+    [25] vctrs_0.6.4        humaniformat_0.6.0 evaluate_0.21      glue_1.6.2        
+    [29] fansi_1.0.5        colorspace_2.1-0   httr_1.4.7         rmarkdown_2.22    
     [33] tools_4.3.1        pkgconfig_2.0.3    htmltools_0.5.5   

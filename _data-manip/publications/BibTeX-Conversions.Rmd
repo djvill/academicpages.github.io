@@ -159,13 +159,21 @@ pubs <- pubs %>%
 Add asterisks to `AUTHOR` (\* = grad/professional student co-author, \*\* = undergrad)
 
 ```{r}
-addStar <- function(x, oneStar, twoStar, starAfter=c("last","end")) {
+addStar <- function(x, oneStar, twoStar, prefixZWSP=FALSE, starAfter=c("last","end")) {
   library(dplyr)
   starAfter <- match.arg(starAfter)
-  star <- case_when(str_remove(x, ",.+") %in% oneStar ~ "*",
-                    str_remove(x, ",.+") %in% twoStar ~ "**",
-                    TRUE ~ "")
-  
+	##Optionally prefix with zero-width space (makes processing easier down the line)
+	if (prefixZWSP) {
+		star <- case_when(str_remove(x, ",.+") %in% oneStar ~ "​*",
+											str_remove(x, ",.+") %in% twoStar ~ "​**",
+											TRUE ~ "")
+  } else {
+		star <- case_when(str_remove(x, ",.+") %in% oneStar ~ "*",
+											str_remove(x, ",.+") %in% twoStar ~ "**",
+											TRUE ~ "")
+	}
+	
+	##Star placement
   if (starAfter=="last") {
     ##Last*, First
     str_replace(x, ",", paste0(star, ","))
