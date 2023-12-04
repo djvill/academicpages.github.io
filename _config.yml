@@ -299,3 +299,10 @@ scholar:
 
 # Serve port
 port: 1111
+
+# Table of contents
+# See https://github.com/toshimaru/jekyll-toc#customization
+toc:
+  min_level: 2
+  max_level: 3
+  ordered_list: true

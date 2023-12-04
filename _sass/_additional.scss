@@ -140,3 +140,14 @@ div.archive {
 	border-bottom: 1px dotted $link-color;
 	cursor: help;
 }
+
+
+//TOC
+.toc-entry {
+  margin-bottom: 0.1em;
+	
+	ol {
+		margin-top: 0;
+		list-style-type: lower-alpha;
+	}
+}

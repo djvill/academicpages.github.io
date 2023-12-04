@@ -7,19 +7,11 @@ redirect_from:
   - /resume
 scholar:
   style: _bibliography/Unified-Stylesheet_DV-noyear.csl
+toc: true
 ---
 
 {% include base_path %}
 
-<details open markdown="block">
-  <summary style="cursor: pointer;">
-    Table of contents
-  </summary>
-1. TOC
-{:toc}
-</details>
-
-<!-- TODO: Only down to heading level 2 -->
 
 ## Education
 

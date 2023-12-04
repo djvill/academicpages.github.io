@@ -25,6 +25,7 @@ group :jekyll_plugins do
   gem "jekyll-redirect-from"
   gem "jekyll-gist"
 	gem "jekyll-pandoc"
+	gem "jekyll-toc"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
