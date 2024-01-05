@@ -95,6 +95,7 @@
       text-decoration: none;
       -webkit-transition: none;
       transition: none;
+			cursor: pointer;
   
       &:hover {
         color: $masthead-link-color-hover;
@@ -122,6 +123,7 @@
       -ms-flex: 1;
       flex: 1;
       overflow: scroll;
+		  flex-wrap: wrap;
   
       li {
         -webkit-box-flex: 0;

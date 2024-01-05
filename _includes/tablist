@@ -37,6 +37,7 @@
 			    
               <li class="tablist__menu-item">
                 <a
+								  id="{{ tab_id }}"
                   class="{{ class }}"
                   onClick="tablistClickHandle(event, '{{ tablist_tag }}', '{{ tab_id }}')"
                 >

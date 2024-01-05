@@ -4,16 +4,16 @@ main:
     url: /research/
     ## Sub: themes, lab, current projects
 
-  - title: "Code and data"
-    url: /research/code-and-data
+  # - title: "Code and data"
+    # url: /research/code-and-data
 
-  - title: "Teaching"
-    url: /teaching/
+  # - title: "Teaching"
+    # url: /teaching/
         
   # - title: "Blog Posts"
     # url: /year-archive/
   - title: "CV"
     url: /cv/
     
-  - title: "About Dan"
-    url: /about-dan/
+  # - title: "About Dan"
+    # url: /about-dan/

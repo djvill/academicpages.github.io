@@ -17,5 +17,5 @@ function tablistClickHandle(evt, tablistName, tabTitle) {
 
   // Display the clicked tab and set it to active.
   document.getElementById(tablistName + "-" + tabTitle).style.display = "block";
-  evt.currentTarget.className += " active";
+	document.getElementById(tabTitle).className += " active"; // This works if the tab itself wasn't clicked but a link
 }
