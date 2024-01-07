@@ -110,6 +110,11 @@ ul {
 	margin-top: 0px;
 }
 
+//Override for research themes 
+.tablist-research-themes-id-content h2 {
+    position: relative;
+}
+
 //Don't cover up internal targets with sticky headings (not currently working)
 div.archive {
 	scroll-padding-top: 50px;

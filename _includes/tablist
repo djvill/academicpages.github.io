@@ -20,7 +20,8 @@
     <div class="tablist__inner-wrap">
       <div class="tablist__menu">
         <nav class="tablist-nav">
-          <ul class="visible-links">
+          <button class="tablist-scroll tablist-scroll-left">&#9654;</button>
+          <ul class="visible-links" onscroll="tablistScrollEvent(event)">
             {% for tab in tablist %}
               {%comment%} Define class(es) {%endcomment%}
               {% assign class = tablist_tag | append: "-id-tab" %}
@@ -46,6 +47,7 @@
               </li>
             {% endfor %}
           </ul>
+					<button class="tablist-scroll tablist-scroll-right">&#9654;</button>
         </nav>
       </div>
     </div>

@@ -70,12 +70,47 @@
     display: block;
     list-style-type: none;
     white-space: nowrap;
+		
+		//Tab top
+    border: 3px solid #7a8288;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+		margin-right: -3px;
+		&:last-child {
+			margin-right: 0px;
+		}
   
     &--lg {
       padding-right: 2em;
       font-weight: 700;
     }
   }
+	
+	//Scroll buttons
+	.tablist-scroll {
+		z-index: 9;
+    position: absolute;
+    box-sizing: border-box;
+    height: 1.7em; //line height plus buffer
+		border: none;
+		background: none;
+		transition: 0.25s ease-in;
+
+		&.tablist-scroll-left {
+			opacity: 0; //just for page load, can be overridden by JS
+			left: 0;
+			background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+			-webkit-transform:rotateY(180deg);
+			-moz-transform:rotateY(180deg);
+			-o-transform:rotateY(180deg);
+			-ms-transform:rotateY(180deg);
+		}
+		&.tablist-scroll-right {
+			right: 0;
+			background-image: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+		}
+	}
 
   .tablist-nav {
     position: relative;
@@ -123,7 +158,7 @@
       -ms-flex: 1;
       flex: 1;
       overflow: scroll;
-		  flex-wrap: wrap;
+		  flex-wrap: nowrap;
   
       li {
         -webkit-box-flex: 0;
