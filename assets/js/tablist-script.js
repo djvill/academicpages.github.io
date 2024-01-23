@@ -24,20 +24,27 @@ function tablistClickHandle(evt, tablistName, tabTitle) {
 var scrollAmt = 100;
 function tablistScrollLeft(evt) {
 	var tabs = evt.target.parentNode.querySelector(".visible-links");
-	tabs.scrollLeft -= scrollAmt;
+	tabs.scrollTo({
+		left: tabs.scrollLeft - scrollAmt,
+		behavior: "smooth"
+	});
 }
 function tablistScrollRight(evt) {
 	var tabs = evt.target.parentNode.querySelector(".visible-links");
-	tabs.scrollLeft += scrollAmt;
+	tabs.scrollTo({
+		left: tabs.scrollLeft + scrollAmt,
+		behavior: "smooth"
+	});
 }
 
 //Show/hide scroll buttons to tablist
-function tablistScrollToggle(tabs) {
+function tablistScrollEvent(evt) {
+	tabs = evt.target;
 	var btnScrollLeft = tabs.parentNode.querySelector(".tablist-scroll-left");
 	var btnScrollRight = tabs.parentNode.querySelector(".tablist-scroll-right");
-	var tabsSL = tabs.scrollLeft
-	var tabsSW = tabs.scrollWidth
-	var tabsCW = tabs.clientWidth
+	var tabsSL = tabs.scrollLeft;
+	var tabsSW = tabs.scrollWidth;
+	var tabsCW = tabs.clientWidth;
 
 	//Hide buttons if not needed
 	if (tabsSW == tabsCW) {
@@ -50,11 +57,8 @@ function tablistScrollToggle(tabs) {
 		btnScrollLeft.style.opacity = 1;
 	}
 	if (tabsSL == tabsSW - tabsCW) {
-		btnScrollLeft.style.opacity = 0;
+		btnScrollRight.style.opacity = 0;
 	} else {
-		btnScrollLeft.style.opacity = 1;
+		btnScrollRight.style.opacity = 1;
 	}
-}
-function tablistScrollEvent(evt) {
-	tablistScrollToggle(evt.target);
 }
