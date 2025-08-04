@@ -1,8 +1,11 @@
 ---
-title: DESCRIPTIVE-TITLE
+title: Acoustic manipulation
 theme-key: acoustic-manip
 ---
 
+Acoustic!
+
+Manipulation!
 
 NARRATIVE DESCRIPTION, USING {% cite BIBTEXKEY --prefix a-m %}
 

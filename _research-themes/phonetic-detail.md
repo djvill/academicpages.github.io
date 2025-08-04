@@ -1,6 +1,7 @@
 ---
-title: DESCRIPTIVE-TITLE
+title: Phonetic detail
 theme-key: phonetic-detail
+sort_order: 20
 ---
 
 

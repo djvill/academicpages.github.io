@@ -1,6 +1,7 @@
 ---
-title: DESCRIPTIVE-TITLE
+title: Critical sociolinguistics
 theme-key: critical-socioling
+sort_order: 70
 ---
 
 

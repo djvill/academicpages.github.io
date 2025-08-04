@@ -5,6 +5,8 @@ permalink: /research/
 author_profile: true
 ---
 
+
 Here's my research!
 
-{% include tablist coll=site.research-themes %}
+{% assign rt = site.research-themes | sort: "sort_order" %}
+{% include tablist coll=rt %}

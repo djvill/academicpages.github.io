@@ -1,6 +1,7 @@
 ---
-title: DESCRIPTIVE-TITLE
+title: Open methods
 theme-key: open-methods
+sort_order: 50
 ---
 
 

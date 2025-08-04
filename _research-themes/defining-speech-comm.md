@@ -1,6 +1,7 @@
 ---
-title: DESCRIPTIVE-TITLE
+title: Defining the speech community
 theme-key: defining-speech-comm
+sort_order: 30
 ---
 
 

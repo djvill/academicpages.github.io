@@ -211,8 +211,7 @@ pubs <- pubs %>%
                                  unique() %>% 
                                  str_subset("^\\d{4}$") %>% 
                                  sort() %>% 
-                                 c(qualDates)))) %>%
-  arrange(YEAR)
+                                 c(qualDates))))
 ```
 
 
